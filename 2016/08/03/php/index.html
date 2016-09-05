@@ -1,0 +1,642 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="php你为何这么吊$变量就是$加字母所以在一个php里会看到很多$有种jquery即视感一个php文件的格式如下
+&amp;lt;?php
+    phpinfo()
+?&amp;gt;
+“.”“.”可以表示字符串的相加
+$a=&amp;quot;m&amp;quot;;
+那么
+$a.&amp;quot;n&amp;quot; =&amp;gt;&amp;quot;mn&amp;quot;
+function(){}作为一门脚本语言，这方面php和js很像，直接声明
+f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="听说php是最好的语言？">
+<meta property="og:url" content="http://yoursite.com/2016/08/03/php/index.html">
+<meta property="og:site_name" content="Ary's HERE">
+<meta property="og:description" content="php你为何这么吊$变量就是$加字母所以在一个php里会看到很多$有种jquery即视感一个php文件的格式如下
+&amp;lt;?php
+    phpinfo()
+?&amp;gt;
+“.”“.”可以表示字符串的相加
+$a=&amp;quot;m&amp;quot;;
+那么
+$a.&amp;quot;n&amp;quot; =&amp;gt;&amp;quot;mn&amp;quot;
+function(){}作为一门脚本语言，这方面php和js很像，直接声明
+f">
+<meta property="og:updated_time" content="2016-09-05T01:42:56.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="听说php是最好的语言？">
+<meta name="twitter:description" content="php你为何这么吊$变量就是$加字母所以在一个php里会看到很多$有种jquery即视感一个php文件的格式如下
+&amp;lt;?php
+    phpinfo()
+?&amp;gt;
+“.”“.”可以表示字符串的相加
+$a=&amp;quot;m&amp;quot;;
+那么
+$a.&amp;quot;n&amp;quot; =&amp;gt;&amp;quot;mn&amp;quot;
+function(){}作为一门脚本语言，这方面php和js很像，直接声明
+f">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/03/php/"/>
+
+  <title> 听说php是最好的语言？ | Ary's HERE </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Ary's HERE</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                听说php是最好的语言？
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-08-03T21:36:38+08:00" content="2016-08-03">
+              2016-08-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="php你为何这么吊"><a href="#php你为何这么吊" class="headerlink" title="php你为何这么吊"></a>php你为何这么吊</h1><h2 id=""><a href="#" class="headerlink" title="$"></a>$</h2><p>变量就是$加字母<br>所以在一个php里会看到很多$<br>有种jquery即视感<br>一个php文件的格式如下</p>
+<pre><code>&lt;?php
+    phpinfo()
+?&gt;
+</code></pre><h2 id="“-”"><a href="#“-”" class="headerlink" title="“.”"></a>“.”</h2><p>“.”可以表示字符串的相加</p>
+<pre><code>$a=&quot;m&quot;;
+</code></pre><p>那么</p>
+<pre><code>$a.&quot;n&quot; =&gt;&quot;mn&quot;
+</code></pre><h2 id="function"><a href="#function" class="headerlink" title="function(){}"></a>function(){}</h2><p>作为一门脚本语言，这方面php和js很像，直接声明</p>
+<pre><code>function myfunc(){
+  dothings();
+}
+</code></pre><p>但有一点不同的是，php的一个全局变量要被子作用域里的函数访问时，要加</p>
+<pre><code>global $x;
+</code></pre><p>比较奇特的是，php里只要是不在函数里定义的变量，都是全局的。<br>所有的全局变量被保存在一个数组中$GLOBALS[index]</p>
+<p>用static的话，执行该函数时，里面的变量不会被重新赋值，延用上一次的值，就不需要递归传值了</p>
+<pre><code>static $m=0;
+$m++;
+</code></pre><h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>echo是php里输出东西，用来调试的一个东西<br>echo后面加变量或直接加字符串都行<br>尤其在今天的nginx里，<br>不知道怎么用log_format来格式化我要输出的变量，<br>直接echo<br>然后这个变量的值就被扔到response里面了，<br>也是一个看log偏方</p>
+<pre><code>$m=0;
+$cars=array(&quot;a&quot;,&quot;b&quot;);
+echo &quot;m=$m&quot;;
+echo &quot;car is {$cars[0]}&quot;;
+</code></pre><h2 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h2><blockquote>
+<p>读取／创建</p>
+</blockquote>
+<pre><code>$myfile = fopen(&quot;newfile.txt&quot;, &quot;w&quot;);
+</code></pre><p>如果这个文件不存在，那么就会创建这样一个文件</p>
+<blockquote>
+<p>写入</p>
+</blockquote>
+<pre><code>$txt = &quot;Bill Gates\n&quot;;
+fwrite($myfile, $txt);
+$txt = &quot;Steve Jobs\n&quot;;
+fwrite($myfile, $txt);
+</code></pre><p>2次写入不会覆盖，加\n就会把指针指到下一行<br>但如果这个文件之前有东西，那么这个文件之前的内容会被重写。</p>
+<blockquote>
+<p>读入</p>
+</blockquote>
+<p>fread函数读取打开的文件，第一个参数是文件名，第二个参数规定读多少，如下会全部读进来</p>
+<pre><code>fread($myfile,filesize(&quot;webdictionary.txt&quot;));
+</code></pre><p>fgets()会从文件读取单行，调用fgets函数后，文件指针会移动到下一行。</p>
+<pre><code>$myfile = fopen(&quot;webdictionary.txt&quot;, &quot;r&quot;) or die(&quot;Unable to open file!&quot;);
+echo fgets($myfile);
+</code></pre><p>feof()会检查是否已经到达文件的最后</p>
+<pre><code>while(!feof($myfile)) {
+echo fgets($myfile) . &quot;&lt;br&gt;&quot;;
+}
+</code></pre><p>fgetc函数读取单字符</p>
+<pre><code>echo fgetc($myfile);
+</code></pre><blockquote>
+<p>删除文件</p>
+</blockquote>
+<p>unlink函数<br>如果成功删除就返回true<br>如果失败就返回false</p>
+<pre><code>if (file_exists($myfile)) {
+  $result=unlink ($myfile);
+  echo $result;
+}   
+</code></pre><h2 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h2><pre><code>time()
+</code></pre><h2 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h2><pre><code>rand(min,max);
+</code></pre><h2 id="转换为string"><a href="#转换为string" class="headerlink" title="转换为string"></a>转换为string</h2><pre><code>$mystr=(string)$mystr;
+</code></pre><h2 id="和js的基情"><a href="#和js的基情" class="headerlink" title="和js的基情"></a>和js的基情</h2><p>今天在做php发邮件的时候（是的，这个还没做完），老大说可以用escape来做，一查发现卧槽这是js的方法啊，一查卧槽php和js还可以交互的，同是脚本，不过网上的例子都很丑</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+  function myfunc(){
+    alert(&quot;i&apos;m js&quot;);
+  }
+&lt;/script&gt;
+
+&lt;?php echo &quot;&lt;script type=&quot;text/javascript&gt;myfunc()&lt;/script&gt;&quot;?&gt;
+</code></pre><p>听老朱一说才恍然大悟，这其实不能算正经交互，“这个原理是服务器解析php代码渲染成html代码”，“等js跑的时候php已经结束工作了”，“已经到网页交给浏览器了”，“这就跟用eval（）运行js代码一样丑陋”，一波吐槽以后，搞明白了，果然语言之间交互还是不那么容易的</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/01/vim/" rel="next" title="传说中的vim～">
+                <i class="fa fa-chevron-left"></i> 传说中的vim～
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/05/Asynchronous/" rel="prev" title="Asynchronous－何为异步">
+                Asynchronous－何为异步 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Ary" />
+          <p class="site-author-name" itemprop="name">Ary</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#php你为何这么吊"><span class="nav-number">1.</span> <span class="nav-text">php你为何这么吊</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text">$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“-”"><span class="nav-number">1.2.</span> <span class="nav-text">“.”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function"><span class="nav-number">1.3.</span> <span class="nav-text">function(){}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#echo"><span class="nav-number">1.4.</span> <span class="nav-text">echo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读写文件"><span class="nav-number">1.5.</span> <span class="nav-text">读写文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间戳"><span class="nav-number">1.6.</span> <span class="nav-text">时间戳</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机数"><span class="nav-number">1.7.</span> <span class="nav-text">随机数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换为string"><span class="nav-number">1.8.</span> <span class="nav-text">转换为string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和js的基情"><span class="nav-number">1.9.</span> <span class="nav-text">和js的基情</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ary</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
