@@ -84,28 +84,49 @@
 
 
 
-<meta name="description" content="terminalheroku安装heroku首先需要ruby和go环境安装命令1wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-安装好以后查看是否安装成功1heroku --version
-输出如下：
-heroku-toolbelt/3.43.12 (x86_64-linux-gnu) ruby/2.3.1
-heroku-cl">
+<meta name="description" content="http理解长连接WebSocket
+header
+
+WebSocket的连接请求头很小，只有2字节。相比http request的头很长，但可能只包含一个很小的值，性能提升很多。
+
+handshaking
+
+由浏览器发起创建连接，然后服务器做出回应，这个过程称为握手。只要一次握手，2者之间就可以建立持久的连接，允许数据进行双向传输。
+
+Socket
+
+WebSocket是一种在tcp连接上进行全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tools">
-<meta property="og:url" content="http://yoursite.com/2016/09/12/tools/index.html">
+<meta property="og:title" content="http">
+<meta property="og:url" content="http://yoursite.com/2016/09/23/http/index.html">
 <meta property="og:site_name" content="Ary's HERE">
-<meta property="og:description" content="terminalheroku安装heroku首先需要ruby和go环境安装命令1wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-安装好以后查看是否安装成功1heroku --version
-输出如下：
-heroku-toolbelt/3.43.12 (x86_64-linux-gnu) ruby/2.3.1
-heroku-cl">
-<meta property="og:updated_time" content="2016-09-12T08:35:12.735Z">
+<meta property="og:description" content="http理解长连接WebSocket
+header
+
+WebSocket的连接请求头很小，只有2字节。相比http request的头很长，但可能只包含一个很小的值，性能提升很多。
+
+handshaking
+
+由浏览器发起创建连接，然后服务器做出回应，这个过程称为握手。只要一次握手，2者之间就可以建立持久的连接，允许数据进行双向传输。
+
+Socket
+
+WebSocket是一种在tcp连接上进行全">
+<meta property="og:updated_time" content="2016-09-23T03:53:25.922Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tools">
-<meta name="twitter:description" content="terminalheroku安装heroku首先需要ruby和go环境安装命令1wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-安装好以后查看是否安装成功1heroku --version
-输出如下：
-heroku-toolbelt/3.43.12 (x86_64-linux-gnu) ruby/2.3.1
-heroku-cl">
+<meta name="twitter:title" content="http">
+<meta name="twitter:description" content="http理解长连接WebSocket
+header
+
+WebSocket的连接请求头很小，只有2字节。相比http request的头很长，但可能只包含一个很小的值，性能提升很多。
+
+handshaking
+
+由浏览器发起创建连接，然后服务器做出回应，这个过程称为握手。只要一次握手，2者之间就可以建立持久的连接，允许数据进行双向传输。
+
+Socket
+
+WebSocket是一种在tcp连接上进行全">
 
 
 
@@ -126,9 +147,9 @@ heroku-cl">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/12/tools/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/23/http/"/>
 
-  <title> tools | Ary's HERE </title>
+  <title> http | Ary's HERE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -248,7 +269,7 @@ heroku-cl">
             
             
               
-                tools
+                http
               
             
           </h1>
@@ -260,8 +281,8 @@ heroku-cl">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-12T16:29:35+08:00" content="2016-09-12">
-              2016-09-12
+            <time itemprop="dateCreated" datetime="2016-09-23T11:20:26+08:00" content="2016-09-23">
+              2016-09-23
             </time>
           </span>
 
@@ -288,16 +309,42 @@ heroku-cl">
       
 
       
-        <h2 id="terminal"><a href="#terminal" class="headerlink" title="terminal"></a>terminal</h2><h3 id="heroku"><a href="#heroku" class="headerlink" title="heroku"></a>heroku</h3><p>安装heroku首先需要ruby和go环境<br>安装命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh</div></pre></td></tr></table></figure></p>
-<p>安装好以后查看是否安装成功<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">heroku --version</div></pre></td></tr></table></figure></p>
-<p>输出如下：</p>
-<pre><code>heroku-toolbelt/3.43.12 (x86_64-linux-gnu) ruby/2.3.1
-heroku-cli/5.2.41-7b040f4 (linux-amd64) go1.6.2
-You have no installed plugins.
-</code></pre><hr>
-<p>Heroku 是一个商业的Rails主机托管解决方案，提供的是“无需准备的部署服务”，因为操作和扩展都是自动的，无需任何系统管理。虽然相较于其它服务商而言Heroku目前的价格较高。</p>
-<p>为适应不断变化的需求，Heroku可以在网格中其它地方启动新的完全独立的dyno，或者关闭那些闲置的dyno。Dyno的启动时间还不到2秒，这足以证明Heroku的平台空前的强大。为了满足更高需求而启动新的dyno实例时，Heroku特制的路由系统可以在把新的请求“冻结”。四个dyno的计算性能相当于传统环境中的一台服务器的计算性能。</p>
-<p>Heroku 的网格本身建于一个强大的云计算环境中，这样它可以根据需要的dyno数量方便地进行扩展或者缩减。网格上层是一个成熟的高并发路由网络，它承担了把请求分派至dyno的工作。还有一些额外的元件，比如HTTP cache和memory cache，它们分别用来减少对dyno和数据库的访问。</p>
+        <h2 id="http理解"><a href="#http理解" class="headerlink" title="http理解"></a>http理解</h2><h3 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h3><h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><blockquote>
+<p>header</p>
+</blockquote>
+<p>WebSocket的连接请求头很小，只有2字节。相比http request的头很长，但可能只包含一个很小的值，性能提升很多。</p>
+<blockquote>
+<p>handshaking</p>
+</blockquote>
+<p>由浏览器发起创建连接，然后服务器做出回应，这个过程称为握手。<br>只要一次握手，2者之间就可以建立持久的连接，允许数据进行双向传输。</p>
+<blockquote>
+<p>Socket</p>
+</blockquote>
+<p>WebSocket是一种在tcp连接上进行全双工通讯的协议，与http的唯一联系是使用http 的101状态码进行协议切换，使用tcp的80端口。</p>
+<blockquote>
+<p>html5</p>
+</blockquote>
+<p>html5中定义的WebSocket</p>
+<h3 id="http-request"><a href="#http-request" class="headerlink" title="http request"></a>http request</h3><h3 id="双工"><a href="#双工" class="headerlink" title="双工"></a>双工</h3><blockquote>
+<p>half-duplex</p>
+</blockquote>
+<p>允许2台设备之间的数据传输，但同一时间只允许一个设备进行传输。</p>
+<blockquote>
+<p>full-duplex</p>
+</blockquote>
+<p>允许2台设备同一时间进行双向数据传输。</p>
+<blockquote>
+<p>TDD</p>
+</blockquote>
+<p>Time-Division Duplexing<br>用时间分隔多任务来分隔发送的和接收的信号。用半双工的传输来模拟全双工。<br>时分双工在非对称网络上（上传及下载速度不平衡）有明显优势，可动态调整对应带宽。</p>
+<blockquote>
+<p>FDD</p>
+</blockquote>
+<p>Frequency-Division Duplexing<br>用频率分隔技术来分隔发送及接受的信号。<br>上传及下载的区块之间用“频率偏移（frequency offset）”来分隔。<br>在上传下载相近时，更有效率。</p>
+<h3 id="http管线化"><a href="#http管线化" class="headerlink" title="http管线化"></a>http管线化</h3><p>http pipelining<br>将多个http请求整批提交的技术，而在发送过程中不需要等待服务器响应。<br>管线化机制通过永久连接完成（persistent connection），并且只有GET和HEAD等请求可以被管线化，非幂等的方法如POST不会被管线化。</p>
+<h3 id="http持久连接"><a href="#http持久连接" class="headerlink" title="http持久连接"></a>http持久连接</h3><p>http1.0中会在现有协议中加一个参数</p>
+<pre><code>Connection:Keep-Alive
+</code></pre><p>同时服务端也返回这样一个参数<br>在http1.1中，默认所以连接都是持久连接<br>持久连接即使用同一个TCP连接来发送和接收多个http请求/应答，不会打开新的连接。</p>
 
       
     </div>
@@ -323,17 +370,13 @@ You have no installed plugins.
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/12/hubot/" rel="next" title="hubot">
-                <i class="fa fa-chevron-left"></i> hubot
+              <a href="/2016/09/12/vue-init/" rel="next" title="vue init">
+                <i class="fa fa-chevron-left"></i> vue init
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/12/vue-init/" rel="prev" title="vue init">
-                vue init <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -433,7 +476,7 @@ You have no installed plugins.
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#terminal"><span class="nav-number">1.</span> <span class="nav-text">terminal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#heroku"><span class="nav-number">1.1.</span> <span class="nav-text">heroku</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#http理解"><span class="nav-number">1.</span> <span class="nav-text">http理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#长连接"><span class="nav-number">1.1.</span> <span class="nav-text">长连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebSocket"><span class="nav-number">1.2.</span> <span class="nav-text">WebSocket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-request"><span class="nav-number">1.3.</span> <span class="nav-text">http request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双工"><span class="nav-number">1.4.</span> <span class="nav-text">双工</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http管线化"><span class="nav-number">1.5.</span> <span class="nav-text">http管线化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http持久连接"><span class="nav-number">1.6.</span> <span class="nav-text">http持久连接</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

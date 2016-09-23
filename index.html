@@ -235,6 +235,135 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/23/http/" itemprop="url">
+                  http
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-23T11:20:26+08:00" content="2016-09-23">
+              2016-09-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="http理解"><a href="#http理解" class="headerlink" title="http理解"></a>http理解</h2><h3 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h3><h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><blockquote>
+<p>header</p>
+</blockquote>
+<p>WebSocket的连接请求头很小，只有2字节。相比http request的头很长，但可能只包含一个很小的值，性能提升很多。</p>
+<blockquote>
+<p>handshaking</p>
+</blockquote>
+<p>由浏览器发起创建连接，然后服务器做出回应，这个过程称为握手。<br>只要一次握手，2者之间就可以建立持久的连接，允许数据进行双向传输。</p>
+<blockquote>
+<p>Socket</p>
+</blockquote>
+<p>WebSocket是一种在tcp连接上进行全双工通讯的协议，与http的唯一联系是使用http 的101状态码进行协议切换，使用tcp的80端口。</p>
+<blockquote>
+<p>html5</p>
+</blockquote>
+<p>html5中定义的WebSocket</p>
+<h3 id="http-request"><a href="#http-request" class="headerlink" title="http request"></a>http request</h3><h3 id="双工"><a href="#双工" class="headerlink" title="双工"></a>双工</h3><blockquote>
+<p>half-duplex</p>
+</blockquote>
+<p>允许2台设备之间的数据传输，但同一时间只允许一个设备进行传输。</p>
+<blockquote>
+<p>full-duplex</p>
+</blockquote>
+<p>允许2台设备同一时间进行双向数据传输。</p>
+<blockquote>
+<p>TDD</p>
+</blockquote>
+<p>Time-Division Duplexing<br>用时间分隔多任务来分隔发送的和接收的信号。用半双工的传输来模拟全双工。<br>时分双工在非对称网络上（上传及下载速度不平衡）有明显优势，可动态调整对应带宽。</p>
+<blockquote>
+<p>FDD</p>
+</blockquote>
+<p>Frequency-Division Duplexing<br>用频率分隔技术来分隔发送及接受的信号。<br>上传及下载的区块之间用“频率偏移（frequency offset）”来分隔。<br>在上传下载相近时，更有效率。</p>
+<h3 id="http管线化"><a href="#http管线化" class="headerlink" title="http管线化"></a>http管线化</h3><p>http pipelining<br>将多个http请求整批提交的技术，而在发送过程中不需要等待服务器响应。<br>管线化机制通过永久连接完成（persistent connection），并且只有GET和HEAD等请求可以被管线化，非幂等的方法如POST不会被管线化。</p>
+<h3 id="http持久连接"><a href="#http持久连接" class="headerlink" title="http持久连接"></a>http持久连接</h3><p>http1.0中会在现有协议中加一个参数</p>
+<pre><code>Connection:Keep-Alive
+</code></pre><p>同时服务端也返回这样一个参数<br>在http1.1中，默认所以连接都是持久连接<br>持久连接即使用同一个TCP连接来发送和接收多个http请求/应答，不会打开新的连接。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/12/vue-init/" itemprop="url">
                   vue init
                 </a>
@@ -1212,169 +1341,6 @@ You have no installed plugins.
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/03/php/" itemprop="url">
-                  听说php是最好的语言？
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-03T21:36:38+08:00" content="2016-08-03">
-              2016-08-03
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="php你为何这么吊"><a href="#php你为何这么吊" class="headerlink" title="php你为何这么吊"></a>php你为何这么吊</h1><h2 id=""><a href="#" class="headerlink" title="$"></a>$</h2><p>变量就是$加字母<br>所以在一个php里会看到很多$<br>有种jquery即视感<br>一个php文件的格式如下</p>
-<pre><code>&lt;?php
-    phpinfo()
-?&gt;
-</code></pre><h2 id="“-”"><a href="#“-”" class="headerlink" title="“.”"></a>“.”</h2><p>“.”可以表示字符串的相加</p>
-<pre><code>$a=&quot;m&quot;;
-</code></pre><p>那么</p>
-<pre><code>$a.&quot;n&quot; =&gt;&quot;mn&quot;
-</code></pre><h2 id="function"><a href="#function" class="headerlink" title="function(){}"></a>function(){}</h2><p>作为一门脚本语言，这方面php和js很像，直接声明</p>
-<pre><code>function myfunc(){
-  dothings();
-}
-</code></pre><p>但有一点不同的是，php的一个全局变量要被子作用域里的函数访问时，要加</p>
-<pre><code>global $x;
-</code></pre><p>比较奇特的是，php里只要是不在函数里定义的变量，都是全局的。<br>所有的全局变量被保存在一个数组中$GLOBALS[index]</p>
-<p>用static的话，执行该函数时，里面的变量不会被重新赋值，延用上一次的值，就不需要递归传值了</p>
-<pre><code>static $m=0;
-$m++;
-</code></pre><h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>echo是php里输出东西，用来调试的一个东西<br>echo后面加变量或直接加字符串都行<br>尤其在今天的nginx里，<br>不知道怎么用log_format来格式化我要输出的变量，<br>直接echo<br>然后这个变量的值就被扔到response里面了，<br>也是一个看log偏方</p>
-<pre><code>$m=0;
-$cars=array(&quot;a&quot;,&quot;b&quot;);
-echo &quot;m=$m&quot;;
-echo &quot;car is {$cars[0]}&quot;;
-</code></pre><h2 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h2><blockquote>
-<p>读取／创建</p>
-</blockquote>
-<pre><code>$myfile = fopen(&quot;newfile.txt&quot;, &quot;w&quot;);
-</code></pre><p>如果这个文件不存在，那么就会创建这样一个文件</p>
-<blockquote>
-<p>写入</p>
-</blockquote>
-<pre><code>$txt = &quot;Bill Gates\n&quot;;
-fwrite($myfile, $txt);
-$txt = &quot;Steve Jobs\n&quot;;
-fwrite($myfile, $txt);
-</code></pre><p>2次写入不会覆盖，加\n就会把指针指到下一行<br>但如果这个文件之前有东西，那么这个文件之前的内容会被重写。</p>
-<blockquote>
-<p>读入</p>
-</blockquote>
-<p>fread函数读取打开的文件，第一个参数是文件名，第二个参数规定读多少，如下会全部读进来</p>
-<pre><code>fread($myfile,filesize(&quot;webdictionary.txt&quot;));
-</code></pre><p>fgets()会从文件读取单行，调用fgets函数后，文件指针会移动到下一行。</p>
-<pre><code>$myfile = fopen(&quot;webdictionary.txt&quot;, &quot;r&quot;) or die(&quot;Unable to open file!&quot;);
-echo fgets($myfile);
-</code></pre><p>feof()会检查是否已经到达文件的最后</p>
-<pre><code>while(!feof($myfile)) {
-echo fgets($myfile) . &quot;&lt;br&gt;&quot;;
-}
-</code></pre><p>fgetc函数读取单字符</p>
-<pre><code>echo fgetc($myfile);
-</code></pre><blockquote>
-<p>删除文件</p>
-</blockquote>
-<p>unlink函数<br>如果成功删除就返回true<br>如果失败就返回false</p>
-<pre><code>if (file_exists($myfile)) {
-  $result=unlink ($myfile);
-  echo $result;
-}   
-</code></pre><h2 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h2><pre><code>time()
-</code></pre><h2 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h2><pre><code>rand(min,max);
-</code></pre><h2 id="转换为string"><a href="#转换为string" class="headerlink" title="转换为string"></a>转换为string</h2><pre><code>$mystr=(string)$mystr;
-</code></pre><h2 id="和js的基情"><a href="#和js的基情" class="headerlink" title="和js的基情"></a>和js的基情</h2><p>今天在做php发邮件的时候（是的，这个还没做完），老大说可以用escape来做，一查发现卧槽这是js的方法啊，一查卧槽php和js还可以交互的，同是脚本，不过网上的例子都很丑</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-  function myfunc(){
-    alert(&quot;i&apos;m js&quot;);
-  }
-&lt;/script&gt;
-
-&lt;?php echo &quot;&lt;script type=&quot;text/javascript&gt;myfunc()&lt;/script&gt;&quot;?&gt;
-</code></pre><p>听老朱一说才恍然大悟，这其实不能算正经交互，“这个原理是服务器解析php代码渲染成html代码”，“等js跑的时候php已经结束工作了”，“已经到网页交给浏览器了”，“这就跟用eval（）运行js代码一样丑陋”，一波吐槽以后，搞明白了，果然语言之间交互还是不那么容易的</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1420,7 +1386,7 @@ echo fgets($myfile) . &quot;&lt;br&gt;&quot;;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
