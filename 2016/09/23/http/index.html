@@ -112,7 +112,7 @@ handshaking
 Socket
 
 WebSocket是一种在tcp连接上进行全">
-<meta property="og:updated_time" content="2016-09-23T03:53:25.922Z">
+<meta property="og:updated_time" content="2016-09-30T06:25:54.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="http">
 <meta name="twitter:description" content="http理解长连接WebSocket
@@ -345,6 +345,14 @@ WebSocket是一种在tcp连接上进行全">
 <h3 id="http持久连接"><a href="#http持久连接" class="headerlink" title="http持久连接"></a>http持久连接</h3><p>http1.0中会在现有协议中加一个参数</p>
 <pre><code>Connection:Keep-Alive
 </code></pre><p>同时服务端也返回这样一个参数<br>在http1.1中，默认所以连接都是持久连接<br>持久连接即使用同一个TCP连接来发送和接收多个http请求/应答，不会打开新的连接。</p>
+<h2 id="协议科普"><a href="#协议科普" class="headerlink" title="协议科普"></a>协议科普</h2><h3 id="tftp"><a href="#tftp" class="headerlink" title="tftp"></a>tftp</h3><blockquote>
+<p>travial file transfer protocel,简单文件传输协议。</p>
+</blockquote>
+<p>是tcp/ip中一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂，开销不大的文件传输服务，端口号69<br>基于udp协议实现。<br>一个tftp包中会包含以下几段：</p>
+<pre><code>| local medium | internet | Datagram | TFTP |
+</code></pre><p>tftp的优势<br>1.可用于UDP环境<br>当需要将程序或者文件同时向许多机器下载时，就需要使用到TFTP协议。<br>2.<br>TFTP所占的内存较小。</p>
+<p>与FTP相比，<br>TFTP多用于局域网以及远程UNIX计算机中，常见FTP多用于互联网中，需要客户端验证，<br>FTP与服务器通信用TCP，而TFTP与服务器通信用UDP、<br>TFTP只支持文件传输，不支持交互。</p>
+<h3 id="MTFTP"><a href="#MTFTP" class="headerlink" title="MTFTP"></a>MTFTP</h3><p>是多点的TFTP服务，应用在windows无盘工作站的服务端。</p>
 
       
     </div>
@@ -448,7 +456,7 @@ WebSocket是一种在tcp连接上进行全">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -480,7 +488,7 @@ WebSocket是一种在tcp连接上进行全">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#http理解"><span class="nav-number">1.</span> <span class="nav-text">http理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#长连接"><span class="nav-number">1.1.</span> <span class="nav-text">长连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebSocket"><span class="nav-number">1.2.</span> <span class="nav-text">WebSocket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-request"><span class="nav-number">1.3.</span> <span class="nav-text">http request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双工"><span class="nav-number">1.4.</span> <span class="nav-text">双工</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http管线化"><span class="nav-number">1.5.</span> <span class="nav-text">http管线化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http持久连接"><span class="nav-number">1.6.</span> <span class="nav-text">http持久连接</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#http理解"><span class="nav-number">1.</span> <span class="nav-text">http理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#长连接"><span class="nav-number">1.1.</span> <span class="nav-text">长连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebSocket"><span class="nav-number">1.2.</span> <span class="nav-text">WebSocket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-request"><span class="nav-number">1.3.</span> <span class="nav-text">http request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双工"><span class="nav-number">1.4.</span> <span class="nav-text">双工</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http管线化"><span class="nav-number">1.5.</span> <span class="nav-text">http管线化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http持久连接"><span class="nav-number">1.6.</span> <span class="nav-text">http持久连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议科普"><span class="nav-number">2.</span> <span class="nav-text">协议科普</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tftp"><span class="nav-number">2.1.</span> <span class="nav-text">tftp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MTFTP"><span class="nav-number">2.2.</span> <span class="nav-text">MTFTP</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
