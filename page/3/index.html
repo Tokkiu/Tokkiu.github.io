@@ -235,6 +235,263 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/05/Asynchronous/" itemprop="url">
+                  Asynchronous－何为异步
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-05T11:44:14+08:00" content="2016-08-05">
+              2016-08-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="何为异步"><a href="#何为异步" class="headerlink" title="何为异步"></a>何为异步</h1><h2 id="异步的存在意义"><a href="#异步的存在意义" class="headerlink" title="异步的存在意义"></a>异步的存在意义</h2><h2 id="异步的一般实现"><a href="#异步的一般实现" class="headerlink" title="异步的一般实现"></a>异步的一般实现</h2><h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p>可以创建一个队列，然后给里面加消息，当然也要能给传参数<br>然后有一个用来接收队列消息<br>接收到以后处理消息，并删除该消息，<br>这样一个实现机制一般是循环查看队列里的内容<br>也可以与之通信<br>每次加进去后申请处理，类似回调<br>lalala<br>这应该类似node的实现机制，有一个事件池</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/03/php/" itemprop="url">
+                  听说php是最好的语言？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-03T21:36:38+08:00" content="2016-08-03">
+              2016-08-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="php你为何这么吊"><a href="#php你为何这么吊" class="headerlink" title="php你为何这么吊"></a>php你为何这么吊</h1><h2 id=""><a href="#" class="headerlink" title="$"></a>$</h2><p>变量就是$加字母<br>所以在一个php里会看到很多$<br>有种jquery即视感<br>一个php文件的格式如下</p>
+<pre><code>&lt;?php
+    phpinfo()
+?&gt;
+</code></pre><h2 id="“-”"><a href="#“-”" class="headerlink" title="“.”"></a>“.”</h2><p>“.”可以表示字符串的相加</p>
+<pre><code>$a=&quot;m&quot;;
+</code></pre><p>那么</p>
+<pre><code>$a.&quot;n&quot; =&gt;&quot;mn&quot;
+</code></pre><h2 id="function"><a href="#function" class="headerlink" title="function(){}"></a>function(){}</h2><p>作为一门脚本语言，这方面php和js很像，直接声明</p>
+<pre><code>function myfunc(){
+  dothings();
+}
+</code></pre><p>但有一点不同的是，php的一个全局变量要被子作用域里的函数访问时，要加</p>
+<pre><code>global $x;
+</code></pre><p>比较奇特的是，php里只要是不在函数里定义的变量，都是全局的。<br>所有的全局变量被保存在一个数组中$GLOBALS[index]</p>
+<p>用static的话，执行该函数时，里面的变量不会被重新赋值，延用上一次的值，就不需要递归传值了</p>
+<pre><code>static $m=0;
+$m++;
+</code></pre><h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>echo是php里输出东西，用来调试的一个东西<br>echo后面加变量或直接加字符串都行<br>尤其在今天的nginx里，<br>不知道怎么用log_format来格式化我要输出的变量，<br>直接echo<br>然后这个变量的值就被扔到response里面了，<br>也是一个看log偏方</p>
+<pre><code>$m=0;
+$cars=array(&quot;a&quot;,&quot;b&quot;);
+echo &quot;m=$m&quot;;
+echo &quot;car is {$cars[0]}&quot;;
+</code></pre><h2 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h2><blockquote>
+<p>读取／创建</p>
+</blockquote>
+<pre><code>$myfile = fopen(&quot;newfile.txt&quot;, &quot;w&quot;);
+</code></pre><p>如果这个文件不存在，那么就会创建这样一个文件</p>
+<blockquote>
+<p>写入</p>
+</blockquote>
+<pre><code>$txt = &quot;Bill Gates\n&quot;;
+fwrite($myfile, $txt);
+$txt = &quot;Steve Jobs\n&quot;;
+fwrite($myfile, $txt);
+</code></pre><p>2次写入不会覆盖，加\n就会把指针指到下一行<br>但如果这个文件之前有东西，那么这个文件之前的内容会被重写。</p>
+<blockquote>
+<p>读入</p>
+</blockquote>
+<p>fread函数读取打开的文件，第一个参数是文件名，第二个参数规定读多少，如下会全部读进来</p>
+<pre><code>fread($myfile,filesize(&quot;webdictionary.txt&quot;));
+</code></pre><p>fgets()会从文件读取单行，调用fgets函数后，文件指针会移动到下一行。</p>
+<pre><code>$myfile = fopen(&quot;webdictionary.txt&quot;, &quot;r&quot;) or die(&quot;Unable to open file!&quot;);
+echo fgets($myfile);
+</code></pre><p>feof()会检查是否已经到达文件的最后</p>
+<pre><code>while(!feof($myfile)) {
+echo fgets($myfile) . &quot;&lt;br&gt;&quot;;
+}
+</code></pre><p>fgetc函数读取单字符</p>
+<pre><code>echo fgetc($myfile);
+</code></pre><blockquote>
+<p>删除文件</p>
+</blockquote>
+<p>unlink函数<br>如果成功删除就返回true<br>如果失败就返回false</p>
+<pre><code>if (file_exists($myfile)) {
+  $result=unlink ($myfile);
+  echo $result;
+}   
+</code></pre><h2 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h2><pre><code>time()
+</code></pre><h2 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h2><pre><code>rand(min,max);
+</code></pre><h2 id="转换为string"><a href="#转换为string" class="headerlink" title="转换为string"></a>转换为string</h2><pre><code>$mystr=(string)$mystr;
+</code></pre><h2 id="和js的基情"><a href="#和js的基情" class="headerlink" title="和js的基情"></a>和js的基情</h2><p>今天在做php发邮件的时候（是的，这个还没做完），老大说可以用escape来做，一查发现卧槽这是js的方法啊，一查卧槽php和js还可以交互的，同是脚本，不过网上的例子都很丑</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+  function myfunc(){
+    alert(&quot;i&apos;m js&quot;);
+  }
+&lt;/script&gt;
+
+&lt;?php echo &quot;&lt;script type=&quot;text/javascript&gt;myfunc()&lt;/script&gt;&quot;?&gt;
+</code></pre><p>听老朱一说才恍然大悟，这其实不能算正经交互，“这个原理是服务器解析php代码渲染成html代码”，“等js跑的时候php已经结束工作了”，“已经到网页交给浏览器了”，“这就跟用eval（）运行js代码一样丑陋”，一波吐槽以后，搞明白了，果然语言之间交互还是不那么容易的</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/01/vim/" itemprop="url">
                   传说中的vim～
                 </a>
@@ -1097,7 +1354,7 @@ yy    复制当前行
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
