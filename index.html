@@ -318,13 +318,30 @@ spec:
         ports:
         - containerPort: 50051
       nodeName: 10.19.132.135
-</code></pre><p>mock-client-rc<br>    apiVersion: v1<br>    kind: ReplicationController<br>    metadata:<br>      labels:<br>        name: ary-lookup-mock-client<br>      name: ary-lookup-client-rc<br>      namespace: ary<br>    spec:<br>      replicas: 10<br>      selector:<br>        name: ary-lookup-client-select<br>      template:<br>        metadata:<br>          labels:<br>            name: ary-lookup-client-select<br>        spec:<br>          containers:</p>
-<pre><code>- name: lookupclient
-  image: 10.19.132.184:30100/library/arymock
-  imagePullPolicy: Always
-  ports:
-  - containerPort: 50051
-nodeName: 10.19.132.135
+</code></pre><p>mock-client-rc</p>
+<pre><code>apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: ary-lookup-mock-client
+  name: ary-lookup-client-rc
+  namespace: ary
+spec:
+  replicas: 10
+  selector:
+    name: ary-lookup-client-select
+  template:
+    metadata:
+      labels:
+        name: ary-lookup-client-select
+    spec:
+      containers:
+      - name: lookupclient
+        image: 10.19.132.184:30100/library/arymock
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 50051
+      nodeName: 10.19.132.135
 </code></pre><h2 id="我的dockerfile"><a href="#我的dockerfile" class="headerlink" title="我的dockerfile"></a>我的dockerfile</h2><pre><code>FROM ubuntu:16.04
 
 WORKDIR /opt
