@@ -98,7 +98,7 @@ heroku-cl">
 输出如下：
 heroku-toolbelt/3.43.12 (x86_64-linux-gnu) ruby/2.3.1
 heroku-cl">
-<meta property="og:updated_time" content="2016-09-30T02:53:27.981Z">
+<meta property="og:updated_time" content="2016-12-02T02:53:06.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tools">
 <meta name="twitter:description" content="terminalheroku安装heroku首先需要ruby和go环境安装命令1wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
@@ -186,7 +186,7 @@ heroku-cl">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -196,7 +196,7 @@ heroku-cl">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -259,7 +259,7 @@ heroku-cl">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-12T16:29:35+08:00" content="2016-09-12">
               2016-09-12
             </time>
@@ -302,7 +302,25 @@ You have no installed plugins.
 <p>pxe(perboot execute environment，预启动执行环境)</p>
 </blockquote>
 <p>是由英特尔开发，工作于client/server的工作模式，支持工作站通过网络从远端服务器下载映像，并由此通过网络启动操作系统。<br>在执行过程中，终端要求服务器分配ip，再用TFTP或MTFTP协议下载一个启动软件包到本机内存中执行，这个安装包会完成终端基本软件配置，并引导预先安装在服务器中的终端操作系统。<br>比较直接的表现是，在网络环境下，pxe可以省去硬盘，该技术的pc相比有盘pc要快3倍以上。<br>但使用pxe的pc也不是传统意义上的 terminal终端，因为使用了pxe的pc并不消耗服务器的cpu、ram等资源，故服务器的硬件要求极低。</p>
+<p>ntpdate 10.19.132.184<br>ntpdate 10.19.132.182</p>
+<h3 id="mosh"><a href="#mosh" class="headerlink" title="mosh"></a>mosh</h3><p>安装：</p>
+<pre><code>服务端
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:keithw/mosh
+sudo apt-get update
+sudo apt-get install mosh
+sudo iptables -I INPUT -p udp --dport 60001 -j ACCEPT
 
+客户端
+mosh -p 60001 ary@10.19.132.212
+</code></pre><p>这样就可以建立起基于udp的连接，ssh是基于tcp的连接的。<br>基本不不会断。</p>
+<h3 id="Iterm2"><a href="#Iterm2" class="headerlink" title="Iterm2"></a>Iterm2</h3><p>一些操作</p>
+<pre><code>command d : 水平新建
+command shift d ： 竖直新建
+command t ： 新建tab
+command [/] ： 当前tab内切换
+command →/←　：　切换tab　
+</code></pre>
       
     </div>
 
@@ -386,10 +404,10 @@ You have no installed plugins.
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -405,8 +423,8 @@ You have no installed plugins.
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -437,7 +455,7 @@ You have no installed plugins.
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#terminal"><span class="nav-number">1.</span> <span class="nav-text">terminal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#heroku"><span class="nav-number">1.1.</span> <span class="nav-text">heroku</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pxe"><span class="nav-number">1.2.</span> <span class="nav-text">pxe</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#terminal"><span class="nav-number">1.</span> <span class="nav-text">terminal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#heroku"><span class="nav-number">1.1.</span> <span class="nav-text">heroku</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pxe"><span class="nav-number">1.2.</span> <span class="nav-text">pxe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mosh"><span class="nav-number">1.3.</span> <span class="nav-text">mosh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterm2"><span class="nav-number">1.4.</span> <span class="nav-text">Iterm2</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -464,7 +482,7 @@ You have no installed plugins.
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
