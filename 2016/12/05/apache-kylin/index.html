@@ -84,13 +84,37 @@
 
 
 
+<meta name="description" content="贴一篇guide启动
+$KYLIN_HOME/bin/check-env.sh
+$KYLIN_HOME/bin/kylin.sh start
+运行例子
+$KYLIN_HOME/bin/sample.sh
+默认运行在localhost：7070/kylinADMIN/KYLIN
+在启动kylin的时候遇到了很多坑，最坑的莫过于这个
+Unable to instantiate org.apache.h">
 <meta property="og:type" content="article">
-<meta property="og:title" content="browserify">
-<meta property="og:url" content="http://yoursite.com/2016/08/11/browserify/index.html">
+<meta property="og:title" content="apache kylin">
+<meta property="og:url" content="http://yoursite.com/2016/12/05/apache-kylin/index.html">
 <meta property="og:site_name" content="Ary's HERE">
-<meta property="og:updated_time" content="2016-09-05T01:42:56.001Z">
+<meta property="og:description" content="贴一篇guide启动
+$KYLIN_HOME/bin/check-env.sh
+$KYLIN_HOME/bin/kylin.sh start
+运行例子
+$KYLIN_HOME/bin/sample.sh
+默认运行在localhost：7070/kylinADMIN/KYLIN
+在启动kylin的时候遇到了很多坑，最坑的莫过于这个
+Unable to instantiate org.apache.h">
+<meta property="og:updated_time" content="2016-12-06T06:31:55.171Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="browserify">
+<meta name="twitter:title" content="apache kylin">
+<meta name="twitter:description" content="贴一篇guide启动
+$KYLIN_HOME/bin/check-env.sh
+$KYLIN_HOME/bin/kylin.sh start
+运行例子
+$KYLIN_HOME/bin/sample.sh
+默认运行在localhost：7070/kylinADMIN/KYLIN
+在启动kylin的时候遇到了很多坑，最坑的莫过于这个
+Unable to instantiate org.apache.h">
 
 
 
@@ -111,9 +135,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/11/browserify/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/05/apache-kylin/"/>
 
-  <title> browserify | Ary's HERE </title>
+  <title> apache kylin | Ary's HERE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -233,7 +257,7 @@
             
             
               
-                browserify
+                apache kylin
               
             
           </h1>
@@ -245,8 +269,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posté le</span>
-            <time itemprop="dateCreated" datetime="2016-08-11T09:25:43+08:00" content="2016-08-11">
-              2016-08-11
+            <time itemprop="dateCreated" datetime="2016-12-05T17:23:28+08:00" content="2016-12-05">
+              2016-12-05
             </time>
           </span>
 
@@ -273,7 +297,16 @@
       
 
       
-        
+        <p>贴一篇<a href="http://www.cnblogs.com/en-heng/p/5170876.html" target="_blank" rel="external">guide</a><br>启动</p>
+<pre><code>$KYLIN_HOME/bin/check-env.sh
+$KYLIN_HOME/bin/kylin.sh start
+</code></pre><p>运行例子</p>
+<pre><code>$KYLIN_HOME/bin/sample.sh
+</code></pre><p>默认运行在localhost：7070/kylin<br>ADMIN/KYLIN</p>
+<p>在启动kylin的时候遇到了很多坑，最坑的莫过于这个</p>
+<pre><code>Unable to instantiate org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient
+</code></pre><p>报了java的runtimeException<br>然后恶心了好久<br>最后发现原因是因为<br>kylin在使用hive的时候要启动一个hive线程，而这个线程只能存在一个<br>所以，当你把hive搭好，执行hive命令跑起来以后，要用kylin了，要把之前这个hive进程停掉先。。。</p>
+
       
     </div>
 
@@ -298,17 +331,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/10/ssh/" rel="next" title="ssh">
-                <i class="fa fa-chevron-left"></i> ssh
+              <a href="/2016/12/05/apache-hive/" rel="next" title="apache hive">
+                <i class="fa fa-chevron-left"></i> apache hive
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/02/kubernetes/" rel="prev" title="kubernetes tips">
-                kubernetes tips <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
