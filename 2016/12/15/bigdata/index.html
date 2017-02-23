@@ -84,16 +84,70 @@
 
 
 
-<meta name="description" content="官方教程">
+<meta name="description" content="##三大原则
+CAP
+C - consistency
+
+强一致性，更新多副本与更新单副本的效果相同
+
+A - availability
+
+可用性，对大规模数据的读写能够在限定延时内完成
+
+P - partition Tolerance
+
+分区容忍性，当分区间无法通信时，系统仍能工作
+ACID
+A - atomicity
+
+原子性，指一个事物要么全部执行要么不执行
+
+C - consistency">
 <meta property="og:type" content="article">
-<meta property="og:title" content="protocol buffer">
-<meta property="og:url" content="http://yoursite.com/2016/10/21/protocol-buffer/index.html">
+<meta property="og:title" content="bigdata">
+<meta property="og:url" content="http://yoursite.com/2016/12/15/bigdata/index.html">
 <meta property="og:site_name" content="Ary's HERE">
-<meta property="og:description" content="官方教程">
-<meta property="og:updated_time" content="2016-10-21T06:00:35.524Z">
+<meta property="og:description" content="##三大原则
+CAP
+C - consistency
+
+强一致性，更新多副本与更新单副本的效果相同
+
+A - availability
+
+可用性，对大规模数据的读写能够在限定延时内完成
+
+P - partition Tolerance
+
+分区容忍性，当分区间无法通信时，系统仍能工作
+ACID
+A - atomicity
+
+原子性，指一个事物要么全部执行要么不执行
+
+C - consistency">
+<meta property="og:updated_time" content="2016-12-15T09:23:50.374Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="protocol buffer">
-<meta name="twitter:description" content="官方教程">
+<meta name="twitter:title" content="bigdata">
+<meta name="twitter:description" content="##三大原则
+CAP
+C - consistency
+
+强一致性，更新多副本与更新单副本的效果相同
+
+A - availability
+
+可用性，对大规模数据的读写能够在限定延时内完成
+
+P - partition Tolerance
+
+分区容忍性，当分区间无法通信时，系统仍能工作
+ACID
+A - atomicity
+
+原子性，指一个事物要么全部执行要么不执行
+
+C - consistency">
 
 
 
@@ -114,9 +168,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/21/protocol-buffer/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/15/bigdata/"/>
 
-  <title> protocol buffer | Ary's HERE </title>
+  <title> bigdata | Ary's HERE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -236,7 +290,7 @@
             
             
               
-                protocol buffer
+                bigdata
               
             
           </h1>
@@ -248,8 +302,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-21T13:59:57+08:00" content="2016-10-21">
-              2016-10-21
+            <time itemprop="dateCreated" datetime="2016-12-15T14:04:30+08:00" content="2016-12-15">
+              2016-12-15
             </time>
           </span>
 
@@ -276,7 +330,48 @@
       
 
       
-        <p><a href="https://developers.google.com/protocol-buffers/docs/javatutorial" target="_blank" rel="external">官方教程</a></p>
+        <p>##三大原则</p>
+<h3 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h3><blockquote>
+<p>C - consistency</p>
+</blockquote>
+<p>强一致性，更新多副本与更新单副本的效果相同</p>
+<blockquote>
+<p>A - availability</p>
+</blockquote>
+<p>可用性，对大规模数据的读写能够在限定延时内完成</p>
+<blockquote>
+<p>P - partition Tolerance</p>
+</blockquote>
+<p>分区容忍性，当分区间无法通信时，系统仍能工作</p>
+<h3 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h3><blockquote>
+<p>A - atomicity</p>
+</blockquote>
+<p>原子性，指一个事物要么全部执行要么不执行</p>
+<blockquote>
+<p>C - consistency</p>
+</blockquote>
+<p>一致性，事物在开始和结束时，满足一致性约束</p>
+<blockquote>
+<p>I - isolation</p>
+</blockquote>
+<p>事物独立，事物之间需要序列化执行</p>
+<blockquote>
+<p>D - Durability</p>
+</blockquote>
+<p>事物的持久性，对系统状态的更新是永久的。</p>
+<h3 id="BASE"><a href="#BASE" class="headerlink" title="BASE"></a>BASE</h3><blockquote>
+<p>B - basically available</p>
+</blockquote>
+<p>基本可用，允许偶尔失败</p>
+<blockquote>
+<p>S - soft state</p>
+</blockquote>
+<p>软状态，不要求在任何时刻都数据同步</p>
+<blockquote>
+<p>E - eventual consistency</p>
+</blockquote>
+<p>最终一致性，弱一致性，在给定时间内达到一致。</p>
+<h3 id="Idempotent"><a href="#Idempotent" class="headerlink" title="Idempotent"></a>Idempotent</h3><p>幂等性，多次调用与一次调用相同。</p>
 
       
     </div>
@@ -302,16 +397,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/12/rpc/" rel="next" title="rpc">
-                <i class="fa fa-chevron-left"></i> rpc
+              <a href="/2016/12/05/apache-kylin/" rel="next" title="apache kylin">
+                <i class="fa fa-chevron-left"></i> apache kylin
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/11/kubectl/" rel="prev" title="kubectl">
-                kubectl <i class="fa fa-chevron-right"></i>
+              <a href="/2017/02/20/jenkins/" rel="prev" title="jenkins">
+                jenkins <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -412,7 +507,7 @@
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CAP"><span class="nav-number">1.</span> <span class="nav-text">CAP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACID"><span class="nav-number">2.</span> <span class="nav-text">ACID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BASE"><span class="nav-number">3.</span> <span class="nav-text">BASE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Idempotent"><span class="nav-number">4.</span> <span class="nav-text">Idempotent</span></a></li></ol></div>
             
           </div>
         </section>

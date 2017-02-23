@@ -104,7 +104,7 @@ $KYLIN_HOME/bin/sample.sh
 默认运行在localhost：7070/kylinADMIN/KYLIN
 在启动kylin的时候遇到了很多坑，最坑的莫过于这个
 Unable to instantiate org.apache.h">
-<meta property="og:updated_time" content="2016-12-06T06:31:55.171Z">
+<meta property="og:updated_time" content="2016-12-19T06:12:43.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="apache kylin">
 <meta name="twitter:description" content="贴一篇guide启动
@@ -195,7 +195,7 @@ Unable to instantiate org.apache.h">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Accueil
+            Startseite
           </a>
         </li>
       
@@ -205,7 +205,7 @@ Unable to instantiate org.apache.h">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -268,7 +268,7 @@ Unable to instantiate org.apache.h">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posté le</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-12-05T17:23:28+08:00" content="2016-12-05">
               2016-12-05
             </time>
@@ -306,7 +306,32 @@ $KYLIN_HOME/bin/kylin.sh start
 <p>在启动kylin的时候遇到了很多坑，最坑的莫过于这个</p>
 <pre><code>Unable to instantiate org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient
 </code></pre><p>报了java的runtimeException<br>然后恶心了好久<br>最后发现原因是因为<br>kylin在使用hive的时候要启动一个hive线程，而这个线程只能存在一个<br>所以，当你把hive搭好，执行hive命令跑起来以后，要用kylin了，要把之前这个hive进程停掉先。。。</p>
+<p>查询</p>
+<pre><code>select car_dt,max(pm10) as maxpm10,min(pm10) as minpm10,max(pm25) as maxpm25,min(pm25) as minpm25 from SAMPLE_CAR_DATA where speed&gt;100 group by car_dt,position order by car_dt
 
+select position,max(pm10) as maxpm10,sum(pm10) as sumpm10,max(pm25) as maxpm25,sum(pm25) as sumpm25 from SAMPLE_CAR_DATA where speed&gt;100 group by position order by position
+
+select car_dt,max(pm10) as maxpm10,sum(pm10) as sumpm10,max(pm25) as maxpm25,sum(pm25) as sumpm25,max(co) as maxco,sum(co) as sumco from SAMPLE_CAR_DATA where speed&gt;80 group by car_dt order by car_dt
+
+select car_dt,count(car_dt) as dts,sum(pm10) as sumpm10,sum(pm25) as sumpm25,sum(co) as sumco from SAMPLE_CAR_DATA where speed&gt;50  group by car_dt order by car_dt  
+</code></pre><p>country,city</p>
+<pre><code>select car_dt,country,city,count(city) as dts,sum(pm25) as sumpm25,sum(co) as sumco from SAMPLE_CAR_DATA where speed&gt;50  group by car_dt,country,city order by car_dt,country,city
+
+kylin 3.7s,hive 41s
+
+select car_dt,country,count(city) as dts,sum(pm25) as sumpm25,sum(co) as sumco from SAMPLE_CAR_DATA where speed&gt;50  group by car_dt,country order by car_dt,country
+
+kylin 0.6s,hive 34s
+
+select car_dt,country,city,count(city) as dts,sum(pm25) as sumpm25,sum(co) as sumco from car where speed&gt;50 and city like &apos;%i%&apos;  group by car_dt,country,city order by car_dt,country,city
+kylin 0.5s hive 39s
+
+100w
+
+select car_dt,country,city,count(city) as dts,sum(pm25) as sumpm25,sum(co) as sumco,avg(speed) as avaSpeed  from car where speed&gt;30 and city like &apos;%h%&apos;  group by car_dt,country,city order by car_dt,country,city
+
+kylin 0.8s hive 41s
+</code></pre>
       
     </div>
 
@@ -338,6 +363,10 @@ $KYLIN_HOME/bin/kylin.sh start
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/15/bigdata/" rel="prev" title="bigdata">
+                bigdata <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -386,10 +415,10 @@ $KYLIN_HOME/bin/kylin.sh start
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table Des Matières
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Ensemble
+            Übersicht
           </li>
         </ul>
       
@@ -405,8 +434,8 @@ $KYLIN_HOME/bin/kylin.sh start
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
-              <span class="site-state-item-name">articles</span>
+              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -437,7 +466,7 @@ $KYLIN_HOME/bin/kylin.sh start
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
             
           </div>
         </section>
@@ -456,7 +485,7 @@ $KYLIN_HOME/bin/kylin.sh start
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -464,11 +493,11 @@ $KYLIN_HOME/bin/kylin.sh start
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Thème -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
