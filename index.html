@@ -279,7 +279,11 @@
       
         
           
-            
+            <blockquote>
+<p>2017-02-23</p>
+</blockquote>
+<p>##awk<br>|awk ‘{print $1}’<br>输出每行第一个参数<br>|awk -F ‘:’ ‘{print $1}’<br>以‘：’为分隔符输出每行第一个参数<br>|awk -F ‘:’ ‘{print $1 “\t” $7}’<br>以’：‘为分隔符输出每行第一个参数和第⑦个参数 并且以tab分离<br>|awk -F ‘:’ ‘BEGIN {print “name,email”} {print $1”,”$3} END {print “no,no”}’<br>以’：‘为分隔符输出每行第一个参数和第3个参数，首行和末行指定<br>|awk -F ‘/root/{print $1}’ /etc/passd<br>搜索文本内带有root的所有行并且输出第一个参数</p>
+
           
         
       
@@ -940,6 +944,12 @@ git log --since=2.weeks
           
             <p>maven的地址<br><a href="search.maven.org">maven.org</a></p>
 <p>maven 提供的restful API 地址<br><a href="http://search.maven.org/#api" target="_blank" rel="external">maven api</a></p>
+<p>maven 常用命令</p>
+<p>mvn clean<br>清理target目录下编译内容</p>
+<p>mvn compile<br>编译项目</p>
+<p>mvn package<br>打包发布项目</p>
+<p>mvn package -Dmaven.test.skip=true<br>打包时跳过测试</p>
+<p>mvn dependency:analyze/tree<br>分析项目依赖</p>
 
           
         
