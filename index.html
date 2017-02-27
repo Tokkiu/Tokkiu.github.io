@@ -235,6 +235,200 @@
             
               
                 
+                <a class="post-title-link" href="/2017/02/27/druid/" itemprop="url">
+                  druid
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-02-27T17:31:32+08:00" content="2017-02-27">
+              2017-02-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>druid 发送请求</p>
+<pre><code>curl -L -H&apos;Content-Type: application/json&apos; -XPOST --data-binary @quickstart/search.json http://broker:8082/druid/v2/?pretty
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/27/hue/" itemprop="url">
+                  hue
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-02-27T16:52:16+08:00" content="2017-02-27">
+              2017-02-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##start</p>
+<pre><code>sudo docker run -it -p 8888:8888 gethue/hue bash
+
+./build/env/bin/hue runserver_plus 0.0.0.0:8888
+</code></pre><p>然后访问本地的<br>localhost：8888</p>
+<p>hue的配置信息存储在hue.ini里</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/23/days/" itemprop="url">
                   days
                 </a>
@@ -1075,289 +1269,6 @@ RUN git clone -b meiling-yancheng-tuning https://gitlab-ci-token:xxxxxx@139.196.
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/11/yaml/" itemprop="url">
-                  yaml文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-11-11T17:16:41+08:00" content="2016-11-11">
-              2016-11-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="我的一个yaml文件"><a href="#我的一个yaml文件" class="headerlink" title="我的一个yaml文件"></a>我的一个yaml文件</h2><p>mock-server-svc</p>
-<pre><code>apiVersion: v1
-kind: Service
-metadata:
-  name: ary-lookup-server
-  namespace: ary
-  labels: null
-spec:
-  ports:
-  - port: 50051
-    targetPort: 50051
-  selector:
-    name: ary-lookup-mock-server
-  externalIPs:
-    - 10.19.132.135
----
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  labels:
-    name: ary-lookup-mock-server
-  name: ary-lookup-rc
-  namespace: ary
-spec:
-  replicas: 10
-  selector:
-    name: ary-lookup-rc-select
-</code></pre><p>后来的<br>        nam: ary-lookup-rc-select</p>
-<pre><code>template:
-  metadata:
-    labels:
-      name: ary-lookup-rc-select
-</code></pre><p>后来的<br>            name: ary-lookup-mock-server<br>            nam: ary-lookup-rc-select</p>
-<pre><code>spec:
-  containers:
-  - name: lookupservice
-    image: 10.19.132.184:30100/library/arymock
-    imagePullPolicy: Always
-    ports:
-    - containerPort: 50051
-  nodeName: 10.19.132.135
-</code></pre><p>mock-client-rc</p>
-<pre><code>apiVersion: v1
-kind: ReplicationController
-metadata:
-  labels:
-    name: ary-lookup-mock-client
-  name: ary-lookup-client-rc
-  namespace: ary
-spec:
-  replicas: 10
-  selector:
-    name: ary-lookup-client-select
-  template:
-    metadata:
-      labels:
-        name: ary-lookup-client-select
-    spec:
-      containers:
-      - name: lookupclient
-        image: 10.19.132.184:30100/library/arymock
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 50051
-      nodeName: 10.19.132.135
-</code></pre><h2 id="我的dockerfile"><a href="#我的dockerfile" class="headerlink" title="我的dockerfile"></a>我的dockerfile</h2><pre><code>FROM ubuntu:16.04
-
-WORKDIR /opt
-
-RUN echo &quot;force update for 1.1.0&quot;
-RUN apt-get update
-RUN apt-get -y upgrade
-
-RUN apt-get install -y telnet net-tools dstat tar openssh-server openjdk-8-jdk maven git wget vim make g++
-
-# enable to run `/usr/sbin/sshd -D`
-RUN mkdir -p /var/run/sshd
-
-# disable http verify, for git clone xxx.
-ENV GIT_SSL_NO_VERIFY=1
-
-# ADD dojoyn.tar.gz ./
-# RUN tar -zxvf dojoyn.tar.gz
-RUN git clone https://gitlab-ci-token:xn57DQruUaChzrxDQhp3@139.196.139.224/gaojingqi/dojoyn.git
-RUN cd dojoyn \
-    &amp;&amp; git checkout meiling-yancheng-tuning \
-    &amp;&amp; mvn -Passembly clean package -Dsurefire.skipTests=true
-ENTRYPOINT [`/usr/sbin/sshd -D`]
-</code></pre><h2 id="我的一些启动jar包命令"><a href="#我的一些启动jar包命令" class="headerlink" title="我的一些启动jar包命令"></a>我的一些启动jar包命令</h2><p>启动lookService</p>
-<pre><code>java -Xmx1000m -Xms1000m -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:meiling-spec/target/meiling-spec-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.LookupService --enable_metrics --namespace defaultNamespace --opentsdb_host 10.19.132.135 --opentsdb_port 30044
-</code></pre><p>启动mockClient</p>
-<pre><code>java -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:lookup-service/target/lookup-service-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.MockEntrypoint --LookupMockClientNum 5 --enable_metrics --namespace defaultNamespace --opentsdb_host localhost --opentsdb_port 4242
-</code></pre><p>带参数启动 mockclient</p>
-<pre><code>java -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:lookup-service/target/lookup-service-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.MockEntrypoint --lookup_mock_client_num 20 --enable_metrics --namespace defaultNamespace --opentsdb_host 10.19.132.135 --opentsdb_port 30044
-</code></pre><p>带port参数启动mock</p>
-<pre><code>java -Xmx1000m -Xms1000m -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:lookup-service/target/lookup-service-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.MockEntrypoint --lookup_batch_data_size 50 --lookup_batch_timeout 10 --lookup_mock_client_num 20 --enable_metrics --namespace defaultNamespace --opentsdb_host 10.19.132.135 --opentsdb_port 30044 --lookup_service_grpc_host 10.19.132.135 --lookup_service_grpc_port 50051
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/11/kubectl/" itemprop="url">
-                  kubectl
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-11-11T17:15:41+08:00" content="2016-11-11">
-              2016-11-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一些常用命令"><a href="#一些常用命令" class="headerlink" title="一些常用命令"></a>一些常用命令</h2><p>ssh root@10.19.132.182<br>apt-get install sysstat<br>docker tag arylookupmock:1.1 10.19.132.184:30100/library/arymock<br>ps -ef |grep docker<br>kubectl –namespace=ary exec -it ary-lookup-client-rc-0gwsl bash</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1403,7 +1314,7 @@ ENTRYPOINT [`/usr/sbin/sshd -D`]
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>

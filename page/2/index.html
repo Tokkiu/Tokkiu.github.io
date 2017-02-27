@@ -235,6 +235,289 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/11/yaml/" itemprop="url">
+                  yaml文件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-11-11T17:16:41+08:00" content="2016-11-11">
+              2016-11-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="我的一个yaml文件"><a href="#我的一个yaml文件" class="headerlink" title="我的一个yaml文件"></a>我的一个yaml文件</h2><p>mock-server-svc</p>
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: ary-lookup-server
+  namespace: ary
+  labels: null
+spec:
+  ports:
+  - port: 50051
+    targetPort: 50051
+  selector:
+    name: ary-lookup-mock-server
+  externalIPs:
+    - 10.19.132.135
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: ary-lookup-mock-server
+  name: ary-lookup-rc
+  namespace: ary
+spec:
+  replicas: 10
+  selector:
+    name: ary-lookup-rc-select
+</code></pre><p>后来的<br>        nam: ary-lookup-rc-select</p>
+<pre><code>template:
+  metadata:
+    labels:
+      name: ary-lookup-rc-select
+</code></pre><p>后来的<br>            name: ary-lookup-mock-server<br>            nam: ary-lookup-rc-select</p>
+<pre><code>spec:
+  containers:
+  - name: lookupservice
+    image: 10.19.132.184:30100/library/arymock
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 50051
+  nodeName: 10.19.132.135
+</code></pre><p>mock-client-rc</p>
+<pre><code>apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: ary-lookup-mock-client
+  name: ary-lookup-client-rc
+  namespace: ary
+spec:
+  replicas: 10
+  selector:
+    name: ary-lookup-client-select
+  template:
+    metadata:
+      labels:
+        name: ary-lookup-client-select
+    spec:
+      containers:
+      - name: lookupclient
+        image: 10.19.132.184:30100/library/arymock
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 50051
+      nodeName: 10.19.132.135
+</code></pre><h2 id="我的dockerfile"><a href="#我的dockerfile" class="headerlink" title="我的dockerfile"></a>我的dockerfile</h2><pre><code>FROM ubuntu:16.04
+
+WORKDIR /opt
+
+RUN echo &quot;force update for 1.1.0&quot;
+RUN apt-get update
+RUN apt-get -y upgrade
+
+RUN apt-get install -y telnet net-tools dstat tar openssh-server openjdk-8-jdk maven git wget vim make g++
+
+# enable to run `/usr/sbin/sshd -D`
+RUN mkdir -p /var/run/sshd
+
+# disable http verify, for git clone xxx.
+ENV GIT_SSL_NO_VERIFY=1
+
+# ADD dojoyn.tar.gz ./
+# RUN tar -zxvf dojoyn.tar.gz
+RUN git clone https://gitlab-ci-token:xn57DQruUaChzrxDQhp3@139.196.139.224/gaojingqi/dojoyn.git
+RUN cd dojoyn \
+    &amp;&amp; git checkout meiling-yancheng-tuning \
+    &amp;&amp; mvn -Passembly clean package -Dsurefire.skipTests=true
+ENTRYPOINT [`/usr/sbin/sshd -D`]
+</code></pre><h2 id="我的一些启动jar包命令"><a href="#我的一些启动jar包命令" class="headerlink" title="我的一些启动jar包命令"></a>我的一些启动jar包命令</h2><p>启动lookService</p>
+<pre><code>java -Xmx1000m -Xms1000m -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:meiling-spec/target/meiling-spec-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.LookupService --enable_metrics --namespace defaultNamespace --opentsdb_host 10.19.132.135 --opentsdb_port 30044
+</code></pre><p>启动mockClient</p>
+<pre><code>java -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:lookup-service/target/lookup-service-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.MockEntrypoint --LookupMockClientNum 5 --enable_metrics --namespace defaultNamespace --opentsdb_host localhost --opentsdb_port 4242
+</code></pre><p>带参数启动 mockclient</p>
+<pre><code>java -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:lookup-service/target/lookup-service-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.MockEntrypoint --lookup_mock_client_num 20 --enable_metrics --namespace defaultNamespace --opentsdb_host 10.19.132.135 --opentsdb_port 30044
+</code></pre><p>带port参数启动mock</p>
+<pre><code>java -Xmx1000m -Xms1000m -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:lookup-service/target/lookup-service-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.MockEntrypoint --lookup_batch_data_size 50 --lookup_batch_timeout 10 --lookup_mock_client_num 20 --enable_metrics --namespace defaultNamespace --opentsdb_host 10.19.132.135 --opentsdb_port 30044 --lookup_service_grpc_host 10.19.132.135 --lookup_service_grpc_port 50051
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/11/kubectl/" itemprop="url">
+                  kubectl
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-11-11T17:15:41+08:00" content="2016-11-11">
+              2016-11-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一些常用命令"><a href="#一些常用命令" class="headerlink" title="一些常用命令"></a>一些常用命令</h2><p>ssh root@10.19.132.182<br>apt-get install sysstat<br>docker tag arylookupmock:1.1 10.19.132.184:30100/library/arymock<br>ps -ef |grep docker<br>kubectl –namespace=ary exec -it ary-lookup-client-rc-0gwsl bash</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/21/protocol-buffer/" itemprop="url">
                   protocol buffer
                 </a>
@@ -1006,404 +1289,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/26/linux/" itemprop="url">
-                  linux
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-26T10:56:32+08:00" content="2016-09-26">
-              2016-09-26
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><h3 id=""><a href="#" class="headerlink" title="/"></a>/</h3><p>可以把Linux系统看作由四部分构成：内核、用户界面、文件结构和实用工具<br>目录结构如下</p>
-<h2 id="root"><a href="#root" class="headerlink" title="root"></a>root</h2><p> 启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
-<h2 id="home"><a href="#home" class="headerlink" title="home"></a>home</h2><p> 存储普通用户的个人文件</p>
-<ul>
-<li><p>ftp — 用户所有服务</p>
-</li>
-<li><p>httpd</p>
-</li>
-<li><p>samba</p>
-</li>
-<li><p>user</p>
-</li>
-</ul>
-<h2 id="bin"><a href="#bin" class="headerlink" title="bin"></a>bin</h2><p> 系统启动时需要的执行文件（二进制）</p>
-<h2 id="sbin"><a href="#sbin" class="headerlink" title="sbin"></a>sbin</h2><p> 可执行程序的目录，但大多存放涉及系统管理的命令。只有root权限才能执行</p>
-<h2 id="proc"><a href="#proc" class="headerlink" title="proc"></a>proc</h2><p> 虚拟，存在linux内核镜像；保存所有内核参数以及系统配置信息</p>
-<ul>
-<li>1 — 进程编号</li>
-</ul>
-<h2 id="usr"><a href="#usr" class="headerlink" title="usr"></a>usr</h2><p> 用户目录，存放用户级的文件</p>
-<ul>
-<li>bin — 几乎所有用户所用命令，另外存在与/bin，/usr/local/bin</li>
-<li>sbin — 系统管理员命令，与用户相关，例如，大部分服务器程序</li>
-<li>include —  存放C/C++头文件的目录</li>
-<li>lib — 固定的程序数据</li>
-<li>local — 本地安装软件保存位置</li>
-<li>man — 手工生成的目录</li>
-<li>info — 信息文档</li>
-<li>doc — 不同包文档信息</li>
-<li>tmp</li>
-<li>X11R6 —  该目录用于保存运行X-Window所需的所有文件。该目录中还包含用于运行GUI要的配置文件和二进制文件。</li>
-<li>X386　— 功能同X11R6，X11 发行版5 的系统文件</li>
-</ul>
-<h2 id="boot"><a href="#boot" class="headerlink" title="boot"></a>boot</h2><p> 引导加载器所需文件，系统所需图片保存于此</p>
-<h2 id="lib"><a href="#lib" class="headerlink" title="lib"></a>lib</h2><p> 根文件系统目录下程序和核心模块的公共库</p>
-<ul>
-<li>modules<br>  可加载模块，系统崩溃后重启所需模块</li>
-</ul>
-<h2 id="dev"><a href="#dev" class="headerlink" title="dev"></a>dev</h2><p> 设备文件目录</p>
-<h2 id="etc"><a href="#etc" class="headerlink" title="etc"></a>etc</h2><p> 配置文件</p>
-<ul>
-<li>skel — home目录建立，该目录初始化</li>
-<li>sysconfig — 网络，时间，键盘等配置目录</li>
-</ul>
-<h2 id="var"><a href="#var" class="headerlink" title="var"></a>var</h2><ul>
-<li>file</li>
-<li>lib — 该目录下的文件在系统运行时，会改变</li>
-<li>local — 安装在/usr/local的程序数据，变化的</li>
-<li>lock — 文件使用特定外设或文件，为其上锁，其他文件暂时不能访问</li>
-<li>log — 记录日志</li>
-<li>run — 系统运行合法信息</li>
-<li>spool — 打印机、邮件、代理服务器等假脱机目录</li>
-<li>tmp</li>
-<li>catman — 缓存目录</li>
-</ul>
-<h2 id="mnt"><a href="#mnt" class="headerlink" title="mnt"></a>mnt</h2><p> 临时用于挂载文件系统的地方。一般情况下这个目录是空的，而在我们将要挂载分区时在这个目录下建立目录，再将我们将要访问的设备挂载在这个目录上，这样我们就可访问文件了。</p>
-<h2 id="tmp"><a href="#tmp" class="headerlink" title="tmp"></a>tmp</h2><p> 临时文件目录，系统启动后的临时文件存放在/var/tmp</p>
-<h2 id="lost-found"><a href="#lost-found" class="headerlink" title="lost+found"></a>lost+found</h2><p> 在文件系统修复时恢复的文件</p>
-<blockquote>
-<p>/</p>
-</blockquote>
-<p>根目录，一般根目录下只存放目录，不要存放文件，/etc、/bin、/dev、/lib、/sbin应该和根目录放置在一个分区中</p>
-<blockquote>
-<p>/bin:/usr/bin</p>
-</blockquote>
-<p>可执行二进制文件的目录，如常用的命令ls、tar、mv、cat等。</p>
-<blockquote>
-<p>/boot</p>
-</blockquote>
-<p>放置linux系统启动时用到的一些文件。/boot/vmlinuz为linux的内核文件，以及/boot/gurb。建议单独分区，分区大小100M即可</p>
-<blockquote>
-<p>/dev</p>
-</blockquote>
-<p>存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备，常用的是挂载光驱mount /dev/cdrom /mnt。</p>
-<blockquote>
-<p>/etc</p>
-</blockquote>
-<p>系统配置文件存放的目录，不建议在此目录下存放可执行文件，重要的配置文件有/etc/inittab、/etc/fstab、/etc/init.d、/etc/X11、/etc/sysconfig、/etc/xinetd.d修改配置文件之前记得备份。</p>
-<pre><code>注：/etc/X11存放与x windows有关的设置。
-</code></pre><blockquote>
-<p>/home</p>
-</blockquote>
-<p>系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录下，~表示当前用户的家目录，~test表示用户test的家目录。建议单独分区，并设置较大的磁盘空间，方便用户存放数据</p>
-<blockquote>
-<p>/lib:/usr/lib:/usr/local/lib</p>
-</blockquote>
-<p>系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助，比较重要的目录为/lib/modules。</p>
-<blockquote>
-<p>/lost+fount</p>
-</blockquote>
-<p>系统异常产生错误时，会将一些遗失的片段放置于此目录下，通常这个目录会自动出现在装置目录下。如加载硬盘于/disk 中，此目录下就会自动产生目录/disk/lost+found</p>
-<blockquote>
-<p>/mnt:/media</p>
-</blockquote>
-<p>光盘默认挂载点，通常光盘挂载于/mnt/cdrom下，也不一定，可以选择任意位置进行挂载。</p>
-<blockquote>
-<p>/opt</p>
-</blockquote>
-<p>给主机额外安装软件所摆放的目录。如：FC4使用的Fedora 社群开发软件，如果想要自行安装新的KDE 桌面软件，可以将该软件安装在该目录下。以前的 Linux 系统中，习惯放置在 /usr/local 目录下</p>
-<blockquote>
-<p>/proc</p>
-</blockquote>
-<p>此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间，比较重要的目录有/proc/cpuinfo、/proc/interrupts、/proc/dma、/proc/ioports、/proc/net/ 等</p>
-<blockquote>
-<p>/root\</p>
-</blockquote>
-<p>系统管理员root的家目录，系统第一个启动的分区为/，所以最好将/root和/放置在一个分区下。</p>
-<blockquote>
-<p>/sbin:/usr/sbin:/usr/local/sbin</p>
-</blockquote>
-<p>放置系统管理员使用的可执行命令，如fdisk、shutdown、mount等。与/bin不同的是，这几个目录是给系统管理员root使用的命令，一般用户只能”查看”而不能设置和使用。</p>
-<blockquote>
-<p>/tmp</p>
-</blockquote>
-<p>一般用户或正在执行的程序临时存放文件的目录,任何人都可以访问,重要数据不可放置在此目录下</p>
-<blockquote>
-<p>/srv</p>
-</blockquote>
-<p>服务启动之后需要访问的数据目录，如www服务需要访问的网页数据存放在/srv/www内</p>
-<blockquote>
-<p>/usr</p>
-</blockquote>
-<p>应用程序存放目录，/usr/bin存放应用程序，/usr/share存放共享数据，/usr/lib存放不能直接运行的，却是许多程序运行所必需的一些函数库文件。/usr/local:存放软件升级包。/usr/share/doc:系统说明文件存放目录。/usr/share/man: 程序说明文件存放目录，使用 man ls时会查询/usr/share/man/man1/ls.1.gz的内容建议单独分区，设置较大的磁盘空间</p>
-<blockquote>
-<p>/var</p>
-</blockquote>
-<p>放置系统执行过程中经常变化的文件，如随时更改的日志文件/var/log，/var/log/message：所有的登录文件存放目录，/var/spool/mail：邮件存放的目录，/var/run:程序或服务启动后，其PID存放在该目录下。建议单独分区，设置较大的磁盘空间</p>
-<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><pre><code># grep root /etc/passwd
-# cat /etc/passwd | grep root
-</code></pre><p>使用方法<br>[root@www ~]# grep [-acinv] [–color=auto] ‘搜寻字符串’ filename<br>选项与参数：</p>
-<ul>
-<li>-a ：将 binary 文件以 text 文件的方式搜寻数据</li>
-<li>-c ：计算找到 ‘搜寻字符串’ 的次数</li>
-<li>-i ：忽略大小写的不同，所以大小写视为相同</li>
-<li>-n ：顺便输出行号</li>
-<li>-v ：反向选择，亦即显示出没有 ‘搜寻字符串’ 内容的那一行！</li>
-<li>–color=auto ：可以将找到的关键词部分加上颜色的显示喔！</li>
-</ul>
-<pre><code># dmesg | grep -n -A3 -B2 --color=auto &apos;eth&apos;  dmesg核心信息，以grep找出eth,所在行的前两行与后三行显示
-# grep ‘energywise’ *                         在当前目录带&apos;energywise&apos;
-# grep -r ‘energywise’ *                      在当前目录及其子目录下带&apos;energywise&apos;
-# grep -l -r ‘energywise’ *                   在当前目录及其子目录下带&apos;energywise&apos;，但只显示匹配的文件
-# grep -n &apos;t[ae]st&apos; regular_express.txt       共通的 &apos;t?st&apos; 存在
-# grep -n &apos;[^g]oo&apos; regular_express.txt        不想要 oo 前面有 g
-# grep -n &apos;[^a-z]oo&apos; regular_express.txt      oo 前面不想要有小写字节
-# grep -n &apos;[0-9]&apos; regular_express.txt         取得有数字的那一行
-# grep -n &apos;^the&apos; regular_express.txt          the 只在行首列出
-# grep -n &apos;^[^a-zA-Z]&apos; regular_express.txt    不想要开头是英文字母
-# grep -n &apos;\.$&apos; regular_express.txt           行尾结束为小数点 (.)
-# grep -n &apos;^$&apos; regular_express.txt            找出空白行
-# grep -n &apos;g..d&apos; regular_express.txt          g??d
-# grep -n &apos;ooo*&apos; regular_express.txt          至少两个 o 以上的字串
-# grep -n &apos;g.*g&apos; regular_express.txt          g 开头与 g 结尾
-# grep -n &apos;[0-9][0-9]*&apos; regular_express.txt   任意数字
-# grep -n &apos;o\{2\}&apos; regular_express.txt        两个 o 的字串
-# grep -n &apos;go\{2,5\}g&apos; regular_express.txt    g 后面接 2 到 5 个 o
-# grep -n &apos;go\{2,\}g&apos; regular_express.txt     2 个 o 以上的 goooo....g
-</code></pre><h3 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h3><p>alias[别名]=[指令名称]</p>
-<ul>
-<li>alias cp=’cp -i’</li>
-<li>alias l.=’ls -d .* –color=tty’</li>
-<li>alias ll=’ls -l –color=tty’</li>
-<li>alias ls=’ls –color=tty’</li>
-<li>alias mv=’mv -i’</li>
-<li>alias rm=’rm -i’</li>
-<li>alias which=’alias | /usr/bin/which –tty-only –read-alias –show-dot –show-tilde’</li>
-</ul>
-<p>##</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/23/http/" itemprop="url">
-                  http
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T11:20:26+08:00" content="2016-09-23">
-              2016-09-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="http理解"><a href="#http理解" class="headerlink" title="http理解"></a>http理解</h2><h3 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h3><h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><blockquote>
-<p>header</p>
-</blockquote>
-<p>WebSocket的连接请求头很小，只有2字节。相比http request的头很长，但可能只包含一个很小的值，性能提升很多。</p>
-<blockquote>
-<p>handshaking</p>
-</blockquote>
-<p>由浏览器发起创建连接，然后服务器做出回应，这个过程称为握手。<br>只要一次握手，2者之间就可以建立持久的连接，允许数据进行双向传输。</p>
-<blockquote>
-<p>Socket</p>
-</blockquote>
-<p>WebSocket是一种在tcp连接上进行全双工通讯的协议，与http的唯一联系是使用http 的101状态码进行协议切换，使用tcp的80端口。</p>
-<blockquote>
-<p>html5</p>
-</blockquote>
-<p>html5中定义的WebSocket</p>
-<h3 id="http-request"><a href="#http-request" class="headerlink" title="http request"></a>http request</h3><h3 id="双工"><a href="#双工" class="headerlink" title="双工"></a>双工</h3><blockquote>
-<p>half-duplex</p>
-</blockquote>
-<p>允许2台设备之间的数据传输，但同一时间只允许一个设备进行传输。</p>
-<blockquote>
-<p>full-duplex</p>
-</blockquote>
-<p>允许2台设备同一时间进行双向数据传输。</p>
-<blockquote>
-<p>TDD</p>
-</blockquote>
-<p>Time-Division Duplexing<br>用时间分隔多任务来分隔发送的和接收的信号。用半双工的传输来模拟全双工。<br>时分双工在非对称网络上（上传及下载速度不平衡）有明显优势，可动态调整对应带宽。</p>
-<blockquote>
-<p>FDD</p>
-</blockquote>
-<p>Frequency-Division Duplexing<br>用频率分隔技术来分隔发送及接受的信号。<br>上传及下载的区块之间用“频率偏移（frequency offset）”来分隔。<br>在上传下载相近时，更有效率。</p>
-<h3 id="http管线化"><a href="#http管线化" class="headerlink" title="http管线化"></a>http管线化</h3><p>http pipelining<br>将多个http请求整批提交的技术，而在发送过程中不需要等待服务器响应。<br>管线化机制通过永久连接完成（persistent connection），并且只有GET和HEAD等请求可以被管线化，非幂等的方法如POST不会被管线化。</p>
-<h3 id="http持久连接"><a href="#http持久连接" class="headerlink" title="http持久连接"></a>http持久连接</h3><p>http1.0中会在现有协议中加一个参数</p>
-<pre><code>Connection:Keep-Alive
-</code></pre><p>同时服务端也返回这样一个参数<br>在http1.1中，默认所以连接都是持久连接<br>持久连接即使用同一个TCP连接来发送和接收多个http请求/应答，不会打开新的连接。</p>
-<h2 id="协议科普"><a href="#协议科普" class="headerlink" title="协议科普"></a>协议科普</h2><h3 id="tftp"><a href="#tftp" class="headerlink" title="tftp"></a>tftp</h3><blockquote>
-<p>travial file transfer protocel,简单文件传输协议。</p>
-</blockquote>
-<p>是tcp/ip中一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂，开销不大的文件传输服务，端口号69<br>基于udp协议实现。<br>一个tftp包中会包含以下几段：</p>
-<pre><code>| local medium | internet | Datagram | TFTP |
-</code></pre><p>tftp的优势<br>1.可用于UDP环境<br>当需要将程序或者文件同时向许多机器下载时，就需要使用到TFTP协议。<br>2.<br>TFTP所占的内存较小。</p>
-<p>与FTP相比，<br>TFTP多用于局域网以及远程UNIX计算机中，常见FTP多用于互联网中，需要客户端验证，<br>FTP与服务器通信用TCP，而TFTP与服务器通信用UDP、<br>TFTP只支持文件传输，不支持交互。</p>
-<h3 id="MTFTP"><a href="#MTFTP" class="headerlink" title="MTFTP"></a>MTFTP</h3><p>是多点的TFTP服务，应用在windows无盘工作站的服务端。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1449,7 +1334,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
