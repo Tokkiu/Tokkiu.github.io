@@ -84,52 +84,16 @@
 
 
 
-<meta name="description" content="我的一个yaml文件mock-server-svc
-apiVersion: v1
-kind: Service
-metadata:
-  name: ary-lookup-server
-  namespace: ary
-  labels: null
-spec:
-  ports:
-  - port: 50051
-    targetPort: 50051
-  selector:
-    name: ar">
+<meta name="description" content="oozie是一个用来制定并执行java工作流的web框架。一般与hadoop mapreduce 、streaming mapreduce 、hive 、pig等集成。可以通过http的方式来完成mapreduce Job的提交。需要：负责执行任务的jar包、mapreduce执行的config文件、oozie本身所需的config文件，然后执行http请求。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="yaml文件">
-<meta property="og:url" content="http://yoursite.com/2016/11/11/yaml/index.html">
+<meta property="og:title" content="oozie">
+<meta property="og:url" content="http://yoursite.com/2017/02/28/oozie/index.html">
 <meta property="og:site_name" content="Ary's HERE">
-<meta property="og:description" content="我的一个yaml文件mock-server-svc
-apiVersion: v1
-kind: Service
-metadata:
-  name: ary-lookup-server
-  namespace: ary
-  labels: null
-spec:
-  ports:
-  - port: 50051
-    targetPort: 50051
-  selector:
-    name: ar">
-<meta property="og:updated_time" content="2016-11-22T07:05:48.086Z">
+<meta property="og:description" content="oozie是一个用来制定并执行java工作流的web框架。一般与hadoop mapreduce 、streaming mapreduce 、hive 、pig等集成。可以通过http的方式来完成mapreduce Job的提交。需要：负责执行任务的jar包、mapreduce执行的config文件、oozie本身所需的config文件，然后执行http请求。">
+<meta property="og:updated_time" content="2017-02-28T03:33:33.769Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yaml文件">
-<meta name="twitter:description" content="我的一个yaml文件mock-server-svc
-apiVersion: v1
-kind: Service
-metadata:
-  name: ary-lookup-server
-  namespace: ary
-  labels: null
-spec:
-  ports:
-  - port: 50051
-    targetPort: 50051
-  selector:
-    name: ar">
+<meta name="twitter:title" content="oozie">
+<meta name="twitter:description" content="oozie是一个用来制定并执行java工作流的web框架。一般与hadoop mapreduce 、streaming mapreduce 、hive 、pig等集成。可以通过http的方式来完成mapreduce Job的提交。需要：负责执行任务的jar包、mapreduce执行的config文件、oozie本身所需的config文件，然后执行http请求。">
 
 
 
@@ -150,9 +114,9 @@ spec:
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/11/yaml/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/28/oozie/"/>
 
-  <title> yaml文件 | Ary's HERE </title>
+  <title> oozie | Ary's HERE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -272,7 +236,7 @@ spec:
             
             
               
-                yaml文件
+                oozie
               
             
           </h1>
@@ -284,8 +248,8 @@ spec:
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-11-11T17:16:41+08:00" content="2016-11-11">
-              2016-11-11
+            <time itemprop="dateCreated" datetime="2017-02-28T11:29:32+08:00" content="2017-02-28">
+              2017-02-28
             </time>
           </span>
 
@@ -312,103 +276,8 @@ spec:
       
 
       
-        <h2 id="我的一个yaml文件"><a href="#我的一个yaml文件" class="headerlink" title="我的一个yaml文件"></a>我的一个yaml文件</h2><p>mock-server-svc</p>
-<pre><code>apiVersion: v1
-kind: Service
-metadata:
-  name: ary-lookup-server
-  namespace: ary
-  labels: null
-spec:
-  ports:
-  - port: 50051
-    targetPort: 50051
-  selector:
-    name: ary-lookup-mock-server
-  externalIPs:
-    - 10.19.132.135
----
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  labels:
-    name: ary-lookup-mock-server
-  name: ary-lookup-rc
-  namespace: ary
-spec:
-  replicas: 10
-  selector:
-    name: ary-lookup-rc-select
-</code></pre><p>后来的<br>        nam: ary-lookup-rc-select</p>
-<pre><code>template:
-  metadata:
-    labels:
-      name: ary-lookup-rc-select
-</code></pre><p>后来的<br>            name: ary-lookup-mock-server<br>            nam: ary-lookup-rc-select</p>
-<pre><code>spec:
-  containers:
-  - name: lookupservice
-    image: 10.19.132.184:30100/library/arymock
-    imagePullPolicy: Always
-    ports:
-    - containerPort: 50051
-  nodeName: 10.19.132.135
-</code></pre><p>mock-client-rc</p>
-<pre><code>apiVersion: v1
-kind: ReplicationController
-metadata:
-  labels:
-    name: ary-lookup-mock-client
-  name: ary-lookup-client-rc
-  namespace: ary
-spec:
-  replicas: 10
-  selector:
-    name: ary-lookup-client-select
-  template:
-    metadata:
-      labels:
-        name: ary-lookup-client-select
-    spec:
-      containers:
-      - name: lookupclient
-        image: 10.19.132.184:30100/library/arymock
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 50051
-      nodeName: 10.19.132.135
-</code></pre><h2 id="我的dockerfile"><a href="#我的dockerfile" class="headerlink" title="我的dockerfile"></a>我的dockerfile</h2><pre><code>FROM ubuntu:16.04
+        <p>oozie是一个用来制定并执行java工作流的web框架。<br>一般与hadoop mapreduce 、streaming mapreduce 、hive 、pig等集成。<br>可以通过http的方式来完成mapreduce Job的提交。<br>需要：<br>负责执行任务的jar包、<br>mapreduce执行的config文件、<br>oozie本身所需的config文件，<br>然后执行http请求。</p>
 
-WORKDIR /opt
-
-RUN echo &quot;force update for 1.1.0&quot;
-RUN apt-get update
-RUN apt-get -y upgrade
-
-RUN apt-get install -y telnet net-tools dstat tar openssh-server openjdk-8-jdk maven git wget vim make g++
-
-# enable to run `/usr/sbin/sshd -D`
-RUN mkdir -p /var/run/sshd
-
-# disable http verify, for git clone xxx.
-ENV GIT_SSL_NO_VERIFY=1
-
-# ADD dojoyn.tar.gz ./
-# RUN tar -zxvf dojoyn.tar.gz
-RUN git clone https://gitlab-ci-token:xn57DQruUaChzrxDQhp3@139.196.139.224/gaojingqi/dojoyn.git
-RUN cd dojoyn \
-    &amp;&amp; git checkout meiling-yancheng-tuning \
-    &amp;&amp; mvn -Passembly clean package -Dsurefire.skipTests=true
-ENTRYPOINT [`/usr/sbin/sshd -D`]
-</code></pre><h2 id="我的一些启动jar包命令"><a href="#我的一些启动jar包命令" class="headerlink" title="我的一些启动jar包命令"></a>我的一些启动jar包命令</h2><p>启动lookService</p>
-<pre><code>java -Xmx1000m -Xms1000m -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:meiling-spec/target/meiling-spec-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.LookupService --enable_metrics --namespace defaultNamespace --opentsdb_host 10.19.132.135 --opentsdb_port 30044
-</code></pre><p>启动mockClient</p>
-<pre><code>java -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:lookup-service/target/lookup-service-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.MockEntrypoint --LookupMockClientNum 5 --enable_metrics --namespace defaultNamespace --opentsdb_host localhost --opentsdb_port 4242
-</code></pre><p>带参数启动 mockclient</p>
-<pre><code>java -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:lookup-service/target/lookup-service-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.MockEntrypoint --lookup_mock_client_num 20 --enable_metrics --namespace defaultNamespace --opentsdb_host 10.19.132.135 --opentsdb_port 30044
-</code></pre><p>带port参数启动mock</p>
-<pre><code>java -Xmx1000m -Xms1000m -cp assembly/target/assembly-0.0.1-ALPHA-SNAPSHOT.jar:experimental/target/experimental-0.0.1-ALPHA-SNAPSHOT.jar:lookup-service/target/lookup-service-0.0.1-ALPHA-SNAPSHOT.jar cn.enncloud.dojoyn.experimental.MockEntrypoint --lookup_batch_data_size 50 --lookup_batch_timeout 10 --lookup_mock_client_num 20 --enable_metrics --namespace defaultNamespace --opentsdb_host 10.19.132.135 --opentsdb_port 30044 --lookup_service_grpc_host 10.19.132.135 --lookup_service_grpc_port 50051
-</code></pre>
       
     </div>
 
@@ -433,17 +302,13 @@ ENTRYPOINT [`/usr/sbin/sshd -D`]
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/11/kubectl/" rel="next" title="kubectl">
-                <i class="fa fa-chevron-left"></i> kubectl
+              <a href="/2017/02/27/druid/" rel="next" title="druid">
+                <i class="fa fa-chevron-left"></i> druid
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/16/streaming/" rel="prev" title="streaming">
-                streaming <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -543,7 +408,7 @@ ENTRYPOINT [`/usr/sbin/sshd -D`]
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#我的一个yaml文件"><span class="nav-number">1.</span> <span class="nav-text">我的一个yaml文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的dockerfile"><span class="nav-number">2.</span> <span class="nav-text">我的dockerfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的一些启动jar包命令"><span class="nav-number">3.</span> <span class="nav-text">我的一些启动jar包命令</span></a></li></ol></div>
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
             
           </div>
         </section>
