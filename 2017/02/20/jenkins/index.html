@@ -86,32 +86,32 @@
 
 <meta name="description" content="官方网址
 文件存放地址/var/lib/jenkins/secrets/
-##　jenkins 目前出现的问题
-１. maven的安装问题在使用一些插件如：checkstyle,findbugs,corbetura时　报错
+##jenkins目前出现的问题
+#maven的安装问题在使用一些插件如：checkstyle,findbugs,corbetura时　报错
 java.io.EOFException
     at java.io.DataInputStream.readInt(DataInputStream.java:392)
-这种">
+这种问题的解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jenkins">
 <meta property="og:url" content="http://yoursite.com/2017/02/20/jenkins/index.html">
 <meta property="og:site_name" content="Ary's HERE">
 <meta property="og:description" content="官方网址
 文件存放地址/var/lib/jenkins/secrets/
-##　jenkins 目前出现的问题
-１. maven的安装问题在使用一些插件如：checkstyle,findbugs,corbetura时　报错
+##jenkins目前出现的问题
+#maven的安装问题在使用一些插件如：checkstyle,findbugs,corbetura时　报错
 java.io.EOFException
     at java.io.DataInputStream.readInt(DataInputStream.java:392)
-这种">
-<meta property="og:updated_time" content="2017-03-10T02:47:19.216Z">
+这种问题的解">
+<meta property="og:updated_time" content="2017-03-10T02:50:25.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jenkins">
 <meta name="twitter:description" content="官方网址
 文件存放地址/var/lib/jenkins/secrets/
-##　jenkins 目前出现的问题
-１. maven的安装问题在使用一些插件如：checkstyle,findbugs,corbetura时　报错
+##jenkins目前出现的问题
+#maven的安装问题在使用一些插件如：checkstyle,findbugs,corbetura时　报错
 java.io.EOFException
     at java.io.DataInputStream.readInt(DataInputStream.java:392)
-这种">
+这种问题的解">
 
 
 
@@ -192,7 +192,7 @@ java.io.EOFException
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -202,7 +202,7 @@ java.io.EOFException
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -265,7 +265,7 @@ java.io.EOFException
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2017-02-20T10:45:52+08:00" content="2017-02-20">
               2017-02-20
             </time>
@@ -296,21 +296,16 @@ java.io.EOFException
       
         <p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Starting+and+Accessing+Jenkins" target="_blank" rel="external">官方网址</a></p>
 <p>文件存放地址<br>/var/lib/jenkins/secrets/</p>
-<p>##　jenkins 目前出现的问题</p>
-<p>１. maven的安装问题<br>在使用一些插件如：checkstyle,findbugs,corbetura时　报错</p>
+<p>##jenkins目前出现的问题</p>
+<p>#maven的安装问题<br>在使用一些插件如：checkstyle,findbugs,corbetura时　报错</p>
 <pre><code>java.io.EOFException
     at java.io.DataInputStream.readInt(DataInputStream.java:392)
 </code></pre><p>这种问题的解答在jenkins的官网有相关issue<br>主要原因是slave机器上的maven是用<br>    apt-get install maven</p>
 <p>这种方式安装导致<br>解决方法是用wget方式重新下载maven的安装包并手动安装。</p>
-<ol>
-<li><p>maven_opts<br>这个值是执行maven命令的附加参数，一般为1024Ｍ这种指定堆大小的参数<br>出问题时原因是有人误填为</p>
-<p>/opt</p>
-</li>
-</ol>
-<p>导致maven会以为opt是个类，并报找不到该class　.opt  的错。</p>
-<ol>
-<li>maven自动安装<br>在系统管理的<br>global tools configuration<br>里，有一个选项是maven自动安装，<br>如果不小心勾选了这一选项，会导致每次构建项目时，<br>都会去尝试下载maven源包并试图安装，<br>然后会导致一系列报错。<br>如果镜像里有maven，就不要选。<br>如果没有，也建议自行安装。</li>
-</ol>
+<p>#maven_opts<br>这个值是执行maven命令的附加参数，一般为1024Ｍ这种指定堆大小的参数<br>出问题时原因是有人误填为</p>
+<pre><code>/opt
+</code></pre><p>导致maven会以为opt是个类，并报找不到该class　.opt  的错。</p>
+<p>#maven自动安装<br>在系统管理的<br>    global tools configuration<br>里，有一个选项是maven自动安装，<br>如果不小心勾选了这一选项，会导致每次构建项目时，<br>都会去尝试下载maven源包并试图安装，<br>然后会导致一系列报错。<br>如果镜像里有maven，就不要选。<br>如果没有，也建议自行安装。</p>
 <p>差不多就这３个问题居然折腾了４天………太弱了……..</p>
 
       
@@ -396,10 +391,10 @@ java.io.EOFException
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -416,7 +411,7 @@ java.io.EOFException
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">40</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -447,7 +442,7 @@ java.io.EOFException
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
             
           </div>
         </section>
@@ -474,7 +469,7 @@ java.io.EOFException
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
