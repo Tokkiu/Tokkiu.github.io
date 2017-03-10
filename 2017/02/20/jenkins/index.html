@@ -108,7 +108,7 @@ java.io.EOFException
 java.io.EOFException
     at java.io.DataInputStream.readInt(DataInputStream.java:392)
 这种">
-<meta property="og:updated_time" content="2017-03-10T02:52:39.347Z">
+<meta property="og:updated_time" content="2017-03-10T02:53:22.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jenkins">
 <meta name="twitter:description" content="官方网址
@@ -201,7 +201,7 @@ java.io.EOFException
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -211,7 +211,7 @@ java.io.EOFException
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -274,7 +274,7 @@ java.io.EOFException
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2017-02-20T10:45:52+08:00" content="2017-02-20">
               2017-02-20
             </time>
@@ -312,8 +312,9 @@ java.io.EOFException
 <p>在使用一些插件如：checkstyle,findbugs,corbetura时　报错</p>
 <pre><code>java.io.EOFException
     at java.io.DataInputStream.readInt(DataInputStream.java:392)
-</code></pre><p>这种问题的解答在jenkins的官网有相关issue<br>主要原因是slave机器上的maven是用<br>    apt-get install maven</p>
-<p>这种方式安装导致<br>解决方法是用wget方式重新下载maven的安装包并手动安装。</p>
+</code></pre><p>这种问题的解答在jenkins的官网有相关issue<br>主要原因是slave机器上的maven是用</p>
+<pre><code>apt-get install maven
+</code></pre><p>这种方式安装导致<br>解决方法是用wget方式重新下载maven的安装包并手动安装。</p>
 <blockquote>
 <p>maven_opts</p>
 </blockquote>
@@ -409,10 +410,10 @@ java.io.EOFException
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -429,7 +430,7 @@ java.io.EOFException
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">40</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -460,7 +461,7 @@ java.io.EOFException
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
             
           </div>
         </section>
@@ -487,7 +488,7 @@ java.io.EOFException
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
