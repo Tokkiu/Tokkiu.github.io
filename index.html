@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -248,7 +248,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2017-02-28T11:29:32+08:00" content="2017-02-28">
               2017-02-28
             </time>
@@ -342,7 +342,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2017-02-27T17:31:32+08:00" content="2017-02-27">
               2017-02-27
             </time>
@@ -437,7 +437,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2017-02-27T16:52:16+08:00" content="2017-02-27">
               2017-02-27
             </time>
@@ -536,7 +536,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2017-02-23T11:03:50+08:00" content="2017-02-23">
               2017-02-23
             </time>
@@ -633,7 +633,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2017-02-20T10:45:52+08:00" content="2017-02-20">
               2017-02-20
             </time>
@@ -664,7 +664,25 @@
       
         
           
-            
+            <p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Starting+and+Accessing+Jenkins" target="_blank" rel="external">官方网址</a></p>
+<p>文件存放地址<br>/var/lib/jenkins/secrets/</p>
+<p>##　jenkins 目前出现的问题</p>
+<p>１. maven的安装问题<br>在使用一些插件如：checkstyle,findbugs,corbetura时　报错</p>
+<pre><code>java.io.EOFException
+    at java.io.DataInputStream.readInt(DataInputStream.java:392)
+</code></pre><p>这种问题的解答在jenkins的官网有相关issue<br>主要原因是slave机器上的maven是用<br>    apt-get install maven</p>
+<p>这种方式安装导致<br>解决方法是用wget方式重新下载maven的安装包并手动安装。</p>
+<ol>
+<li><p>maven_opts<br>这个值是执行maven命令的附加参数，一般为1024Ｍ这种指定堆大小的参数<br>出问题时原因是有人误填为</p>
+<p>/opt</p>
+</li>
+</ol>
+<p>导致maven会以为opt是个类，并报找不到该class　.opt  的错。</p>
+<ol>
+<li>maven自动安装<br>在系统管理的<br>global tools configuration<br>里，有一个选项是maven自动安装，<br>如果不小心勾选了这一选项，会导致每次构建项目时，<br>都会去尝试下载maven源包并试图安装，<br>然后会导致一系列报错。<br>如果镜像里有maven，就不要选。<br>如果没有，也建议自行安装。</li>
+</ol>
+<p>差不多就这３个问题居然折腾了４天………太弱了……..</p>
+
           
         
       
@@ -726,7 +744,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-15T14:04:30+08:00" content="2016-12-15">
               2016-12-15
             </time>
@@ -861,7 +879,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-05T17:23:28+08:00" content="2016-12-05">
               2016-12-05
             </time>
@@ -988,7 +1006,7 @@ kylin 0.8s hive 41s
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-05T17:23:20+08:00" content="2016-12-05">
               2016-12-05
             </time>
@@ -1098,7 +1116,7 @@ $HADOOP_HOME/bin/hadoop fs -chmod g+w   /user/hive/warehouse
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-01T10:37:14+08:00" content="2016-12-01">
               2016-12-01
             </time>
@@ -1199,7 +1217,7 @@ git log --since=2.weeks
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-11-29T10:13:26+08:00" content="2016-11-29">
               2016-11-29
             </time>
@@ -1312,7 +1330,7 @@ git log --since=2.weeks
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">40</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1359,7 +1377,7 @@ git log --since=2.weeks
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
